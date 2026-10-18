@@ -1,0 +1,36 @@
+---
+/**
+ * Official Go Rendez-Vous snippet, kept off-screen.
+ * Their script opens the booking window only from the button it injects
+ * into this element, so the element stays in the page. "Book now" clicks it.
+ * If their script does not run, that link follows site.goRendezVousUrl.
+ */
+import { site } from '../data/site';
+---
+<div data-grv-embed aria-hidden="true" style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0">
+<div data-professionalpagename="hakini" data-bookingwidgeturlparams="companyId=101639&amp;includedProfessionalIds=5419766" data-language="fr" data-label="Prendre rendez-vous" data-url="https://www.gorendezvous.com/" class="gorendezvous-button" data-buttoncolor="info" data-width="203px" data-height="50px"><a href={site.goRendezVousUrl} target="GOrendezvous">Prendre rendez-vous</a></div>
+<script is:inline>
+!function (d, s) { var js, sid = "gorendezvous-bookingwidget-script"; var sEl = d.getElementById(sid); if (sEl) { sEl.parentNode.removeChild(sEl); } js = d.createElement(s); js.id = sid; js.src = "https://www.gorendezvous.com/Scripts/gorendezvous.bookingWidgetV2.min.js?v=" + (Math.floor(new Date().getTime() / (1000 * 60 * 30)) * (1000 * 60 * 30)).toString(); d.body.appendChild(js); }(document, "script");
+</script>
+</div>
+<script is:inline>
+document.addEventListener('click', function (event) {
+  var trigger = event.target && event.target.closest ? event.target.closest('[data-book-now]') : null;
+  if (!trigger) return;
+  event.preventDefault();
+  var fallback = trigger.href;
+  var started = Date.now();
+  (function attempt() {
+    var frame = document.getElementById('GOrendezvousFrame');
+    var btn = null;
+    try {
+      btn = frame && frame.contentDocument && frame.contentDocument.querySelector('.h-GOrendezvousButton');
+    } catch (e) {
+      btn = null;
+    }
+    if (btn) { btn.click(); return; }
+    if (Date.now() - started > 2500) { window.location.href = fallback; return; }
+    window.setTimeout(attempt, 100);
+  })();
+});
+</script>

@@ -1,0 +1,34 @@
+/*
+ * Design tokens — the palette and type used across the site.
+ *
+ * The markup ported from the mockup still uses these values as inline hex
+ * colours. The variables below document the system and can be adopted
+ * gradually (e.g. `color: var(--forest)` instead of `color: #33503F`).
+ */
+:root {
+  /* Grounds (pastel) */
+  --linen: #F6F3EC;      /* page background */
+  --sage: #E1EAD9;       /* pastel green sections */
+  --sage-soft: #F3F6EF;  /* cards on sage */
+  --moss: #C9D8BE;       /* borders, decorative rings */
+  --moss-deep: #B3C7A7;  /* canopy / numerals */
+  --moss-line: #9DB394;  /* outline button border */
+  --sand: #EFE4D6;       /* pastel brown sections, footer */
+  --clay: #D9C3AA;       /* brown blobs, wavy rules */
+  --river: #D7E7E3;      /* water accent */
+  --river-line: #7FA39C; /* water strokes */
+
+  /* Ink */
+  --forest: #33503F;      /* headings, buttons, links */
+  --forest-deep: #2F4A3A; /* CTA band */
+  --bark: #7A5C46;        /* eyebrows, accents in headings */
+  --bark-deep: #4F3B2C;   /* text on sand */
+  --ink: #3A3631;         /* body text */
+  --ink-soft: #4A463E;    /* paragraphs */
+  --ink-muted: #625C53;   /* captions */
+  --sage-on-dark: #CFDCC6;/* text on forest */
+
+  /* Type */
+  --font-display: Fraunces, Georgia, serif;
+  --font-body: Figtree, system-ui, sans-serif;
+}

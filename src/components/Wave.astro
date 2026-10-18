@@ -1,0 +1,37 @@
+---
+/**
+ * Curved section divider: two layered "river" curves.
+ * Sits between two sections — `from` is the colour of the section above,
+ * `to` the colour of the section below. Never use straight dividers.
+ */
+interface Props {
+  from: string;
+  to: string;
+  shape?: keyof typeof shapes;
+  /** Opacity of the back curve (the translucent "ripple" layer). */
+  opacity?: number;
+}
+
+const shapes = {
+  rise: [
+    'M0,70 C200,20 420,20 640,58 C860,96 1080,110 1300,70 C1370,58 1410,52 1440,50 L1440,120 L0,120 Z',
+    'M0,90 C240,52 460,64 700,86 C940,108 1180,104 1440,78 L1440,120 L0,120 Z',
+  ],
+  fall: [
+    'M0,40 C180,90 400,100 640,62 C880,24 1100,20 1300,52 C1370,64 1410,70 1440,72 L1440,120 L0,120 Z',
+    'M0,74 C260,110 520,96 760,74 C1000,52 1220,60 1440,92 L1440,120 L0,120 Z',
+  ],
+  ripple: [
+    'M0,60 C180,110 360,10 600,40 C840,70 1020,120 1260,70 C1350,52 1400,40 1440,44 L1440,120 L0,120 Z',
+    'M0,84 C220,58 480,104 740,84 C1000,64 1220,70 1440,90 L1440,120 L0,120 Z',
+  ],
+  drift: [
+    'M0,50 C220,96 420,104 680,70 C940,36 1180,40 1440,70 L1440,120 L0,120 Z',
+    'M0,86 C240,64 500,100 760,92 C1020,84 1240,66 1440,82 L1440,120 L0,120 Z',
+  ],
+} as const;
+
+const { from, to, shape = 'rise', opacity = 0.55 } = Astro.props;
+const [back, front] = shapes[shape];
+---
+<svg viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true" style={`display: block; width: 100%; height: 96px; background: ${from}`}><path d={back} fill={to} opacity={opacity}></path><path d={front} fill={to}></path></svg>

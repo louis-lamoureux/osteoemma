@@ -1,0 +1,126 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Wave from '../components/Wave.astro';
+import { site } from '../data/site';
+---
+<BaseLayout title="About — Lorem Ipsum, Osteopath" current="about">
+<main>
+<section style="background: #EFE4D6">
+<div style="max-width: 1200px; margin: 0 auto; padding: 40px 24px 32px; display: flex; flex-wrap: wrap; align-items: center; gap: 56px">
+<div style="flex: 1 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 20px">
+<span style="display: inline-flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #7A5C46"><span style="width: 28px; height: 2px; background: #7A5C46; border-radius: 2px"></span>About</span>
+<h1 style="margin: 0; font-family: Fraunces, Georgia, serif; font-weight: 400; font-size: clamp(40px, 5vw, 66px); line-height: 1.05; letter-spacing: -0.015em; color: #33503F">Lorem Ipsum, <em style="font-style: italic; color: #7A5C46">D.O.</em></h1>
+<p style="margin: 0; font-size: 19px; color: #4F3B2C; max-width: 540px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet, sed ut perspiciatis unde omnis.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 10px">
+<span style="padding: 8px 14px; border-radius: 999px; background: #F6F3EC; color: #33503F; font-size: 14px; font-weight: 500">[00] years of practice</span>
+<span style="padding: 8px 14px; border-radius: 999px; background: #F6F3EC; color: #33503F; font-size: 14px; font-weight: 500">Français · English</span>
+</div>
+</div>
+<div style="flex: 1 1 360px; min-width: 0; display: flex; justify-content: center">
+<div style="width: 100%; max-width: 420px; aspect-ratio: 4 / 5; border-radius: 46% 54% 40% 60% / 55% 42% 58% 45%; background: #D9C3AA; position: relative; overflow: hidden; display: flex; align-items: flex-end; justify-content: center">
+<svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%" fill="none" stroke="#CDB497" stroke-width="1.5"><ellipse cx="200" cy="250" rx="40" ry="36"></ellipse><ellipse cx="196" cy="254" rx="84" ry="76"></ellipse><ellipse cx="192" cy="258" rx="128" ry="116"></ellipse><ellipse cx="188" cy="262" rx="172" ry="158"></ellipse><ellipse cx="184" cy="266" rx="216" ry="200"></ellipse></svg>
+<span style="position: relative; margin-bottom: 60px; padding: 8px 16px; border-radius: 999px; background: #F6F3EC; font-size: 13px; color: #4A463E">Photo — portrait</span>
+</div>
+</div>
+</div>
+</section>
+<Wave from="#EFE4D6" to="#F6F3EC" shape="drift" />
+
+<section style="max-width: 1100px; margin: 0 auto; padding: 32px 24px 64px; display: flex; flex-wrap: wrap; gap: 48px">
+<div style="flex: 1 1 300px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
+<span style="font-size: 13px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #7A5C46">Her story</span>
+<h2 style="margin: 0; font-family: Fraunces, Georgia, serif; font-weight: 400; font-size: clamp(30px, 3.2vw, 44px); line-height: 1.12; color: #33503F">Lorem ipsum, <em style="font-style: italic">like roots</em> reaching deep</h2>
+</div>
+<div style="flex: 2 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 18px; color: #4A463E">
+<p style="margin: 0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+<p style="margin: 0">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p style="margin: 0">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+</div>
+</section>
+
+<section style="max-width: 900px; margin: 0 auto; padding: 16px 24px 88px; display: flex; flex-direction: column; gap: 36px">
+<div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px">
+<span style="font-size: 13px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #7A5C46">Experience</span>
+<h2 style="margin: 0; font-family: Fraunces, Georgia, serif; font-weight: 400; font-size: clamp(30px, 3.2vw, 44px); line-height: 1.12; color: #33503F">Growth <em style="font-style: italic">rings</em></h2>
+</div>
+<div style="position: relative">
+<svg viewBox="0 0 40 800" preserveAspectRatio="none" aria-hidden="true" style="position: absolute; left: 16px; top: 24px; bottom: 24px; width: 40px; height: calc(100% - 48px)"><path d="M20,0 C34,60 6,140 20,200 S34,340 20,400 S6,540 20,600 S34,740 20,800" fill="none" stroke="#C9D8BE" stroke-width="2"></path></svg>
+<ol style="position: relative; list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 28px">
+<li style="display: flex; gap: 24px; align-items: flex-start">
+<svg width="72" height="72" viewBox="0 0 72 72" aria-hidden="true" style="flex: 0 0 72px"><circle cx="36" cy="36" r="34" fill="#F6F3EC" stroke="#C9D8BE" stroke-width="1.5"></circle><circle cx="36" cy="36" r="24" fill="none" stroke="#C9D8BE" stroke-width="1.5"></circle><circle cx="36" cy="36" r="14" fill="#E1EAD9" stroke="#9DB394" stroke-width="1.5"></circle></svg>
+<div style="flex: 1 1 auto; min-width: 0; background: #FFFFFF; border-radius: 24px; padding: 22px 26px; display: flex; flex-direction: column; gap: 6px">
+<span style="font-family: Fraunces, Georgia, serif; font-size: 18px; color: #7A5C46">20XX — today</span>
+<span style="font-family: Fraunces, Georgia, serif; font-size: 23px; color: #33503F">Lorem ipsum dolor sit amet</span>
+<span style="color: #4A463E; font-size: 16px">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
+</div>
+</li>
+<li style="display: flex; gap: 24px; align-items: flex-start">
+<svg width="72" height="72" viewBox="0 0 72 72" aria-hidden="true" style="flex: 0 0 72px"><circle cx="36" cy="36" r="30" fill="#F6F3EC" stroke="#C9D8BE" stroke-width="1.5"></circle><circle cx="36" cy="36" r="20" fill="none" stroke="#C9D8BE" stroke-width="1.5"></circle><circle cx="36" cy="36" r="11" fill="#E1EAD9" stroke="#9DB394" stroke-width="1.5"></circle></svg>
+<div style="flex: 1 1 auto; min-width: 0; background: #FFFFFF; border-radius: 24px; padding: 22px 26px; display: flex; flex-direction: column; gap: 6px">
+<span style="font-family: Fraunces, Georgia, serif; font-size: 18px; color: #7A5C46">20XX — 20XX</span>
+<span style="font-family: Fraunces, Georgia, serif; font-size: 23px; color: #33503F">Ut enim ad minim veniam</span>
+<span style="color: #4A463E; font-size: 16px">Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span>
+</div>
+</li>
+<li style="display: flex; gap: 24px; align-items: flex-start">
+<svg width="72" height="72" viewBox="0 0 72 72" aria-hidden="true" style="flex: 0 0 72px"><circle cx="36" cy="36" r="26" fill="#F6F3EC" stroke="#C9D8BE" stroke-width="1.5"></circle><circle cx="36" cy="36" r="16" fill="none" stroke="#C9D8BE" stroke-width="1.5"></circle><circle cx="36" cy="36" r="8" fill="#E1EAD9" stroke="#9DB394" stroke-width="1.5"></circle></svg>
+<div style="flex: 1 1 auto; min-width: 0; background: #FFFFFF; border-radius: 24px; padding: 22px 26px; display: flex; flex-direction: column; gap: 6px">
+<span style="font-family: Fraunces, Georgia, serif; font-size: 18px; color: #7A5C46">20XX — 20XX</span>
+<span style="font-family: Fraunces, Georgia, serif; font-size: 23px; color: #33503F">Duis aute irure dolor</span>
+<span style="color: #4A463E; font-size: 16px">In reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</span>
+</div>
+</li>
+<li style="display: flex; gap: 24px; align-items: flex-start">
+<svg width="72" height="72" viewBox="0 0 72 72" aria-hidden="true" style="flex: 0 0 72px"><circle cx="36" cy="36" r="22" fill="#F6F3EC" stroke="#C9D8BE" stroke-width="1.5"></circle><circle cx="36" cy="36" r="12" fill="none" stroke="#C9D8BE" stroke-width="1.5"></circle><circle cx="36" cy="36" r="5" fill="#E1EAD9" stroke="#9DB394" stroke-width="1.5"></circle></svg>
+<div style="flex: 1 1 auto; min-width: 0; background: #FFFFFF; border-radius: 24px; padding: 22px 26px; display: flex; flex-direction: column; gap: 6px">
+<span style="font-family: Fraunces, Georgia, serif; font-size: 18px; color: #7A5C46">20XX</span>
+<span style="font-family: Fraunces, Georgia, serif; font-size: 23px; color: #33503F">Excepteur sint occaecat</span>
+<span style="color: #4A463E; font-size: 16px">Cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
+</div>
+</li>
+</ol>
+</div>
+</section>
+
+<Wave from="#F6F3EC" to="#E1EAD9" shape="rise" />
+<section style="background: #E1EAD9">
+<div style="max-width: 1200px; margin: 0 auto; padding: 32px 24px 80px; display: flex; flex-direction: column; gap: 40px">
+<div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px">
+<span style="font-size: 13px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #7A5C46">Training &amp; credentials</span>
+<h2 style="margin: 0; font-family: Fraunces, Georgia, serif; font-weight: 400; font-size: clamp(30px, 3.2vw, 44px); line-height: 1.12; color: #33503F">Lorem ipsum <em style="font-style: italic">dolor</em></h2>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px">
+<div style="background: #F3F6EF; border-radius: 40px 28px 28px 28px; padding: 28px; display: flex; flex-direction: column; gap: 10px">
+<svg width="32" height="32" viewBox="0 0 28 28" fill="none" stroke="#33503F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10 14 5l11 5-11 5Z"></path><path d="M8 12.5V18c3 2.5 9 2.5 12 0v-5.5M25 10v6"></path></svg>
+<span style="font-family: Fraunces, Georgia, serif; font-size: 21px; color: #33503F">Diploma in osteopathy (D.O.)</span>
+<span style="color: #4A463E; font-size: 16px">[School name] · 20XX. Lorem ipsum dolor sit amet consectetur.</span>
+</div>
+<div style="background: #F3F6EF; border-radius: 28px 40px 28px 28px; padding: 28px; display: flex; flex-direction: column; gap: 10px">
+<svg width="32" height="32" viewBox="0 0 28 28" fill="none" stroke="#33503F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3 5 7v6c0 6 4 10 9 12 5-2 9-6 9-12V7Z"></path><path d="m10 14 3 3 5-6"></path></svg>
+<span style="font-family: Fraunces, Georgia, serif; font-size: 21px; color: #33503F">Professional membership</span>
+<span style="color: #4A463E; font-size: 16px">[Association name] · Member #0000. Sed do eiusmod tempor.</span>
+</div>
+<div style="background: #F3F6EF; border-radius: 28px 28px 40px 28px; padding: 28px; display: flex; flex-direction: column; gap: 10px">
+<svg width="32" height="32" viewBox="0 0 28 28" fill="none" stroke="#33503F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 24V13M14 13c0-4-3-7-8-7 0 4 3 7 8 7ZM14 16c0-4 3-7 8-7 0 4-3 7-8 7Z"></path></svg>
+<span style="font-family: Fraunces, Georgia, serif; font-size: 21px; color: #33503F">Continuing education</span>
+<span style="color: #4A463E; font-size: 16px">Lorem ipsum · Dolor sit amet · Consectetur adipiscing elit.</span>
+</div>
+<div style="background: #F3F6EF; border-radius: 28px 28px 28px 40px; padding: 28px; display: flex; flex-direction: column; gap: 10px">
+<svg width="32" height="32" viewBox="0 0 28 28" fill="none" stroke="#33503F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3v11M14 14c-3 2-6 3-9 3M14 14c3 2 6 3 9 3M14 14v10M14 18c-2 2-4 4-7 5M14 18c2 2 4 4 7 5"></path></svg>
+<span style="font-family: Fraunces, Georgia, serif; font-size: 21px; color: #33503F">Prior background</span>
+<span style="color: #4A463E; font-size: 16px">[Kinesiology / massage / other] · Ut enim ad minim veniam.</span>
+</div>
+</div>
+</div>
+</section>
+
+<Wave from="#E1EAD9" to="#2F4A3A" shape="rise" opacity={0.35} />
+<section style="background: #2F4A3A">
+<div style="max-width: 760px; margin: 0 auto; padding: 40px 24px 72px; display: flex; flex-direction: column; align-items: center; gap: 20px; text-align: center">
+<h2 style="margin: 0; font-family: Fraunces, Georgia, serif; font-weight: 400; font-size: clamp(32px, 3.6vw, 50px); line-height: 1.1; color: #F6F3EC">Lorem ipsum dolor <em style="font-style: italic; color: #D9C3AA">sit amet?</em></h2>
+<p style="margin: 0; color: #CFDCC6; font-size: 18px">Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.</p>
+<a href={site.goRendezVousUrl} data-book-now style="margin-top: 8px; display: inline-flex; align-items: center; gap: 10px; padding: 16px 28px; border-radius: 999px; background: #E1EAD9; color: #2F4A3A; text-decoration: none; font-weight: 600">See availabilities <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2F4A3A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+</div>
+</section>
+</main>
+</BaseLayout>

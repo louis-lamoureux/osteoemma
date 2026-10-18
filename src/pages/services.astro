@@ -1,0 +1,112 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Wave from '../components/Wave.astro';
+import { site } from '../data/site';
+---
+<BaseLayout title="Services — Lorem Ipsum, Osteopath" current="services">
+<main>
+<section style="background: #E1EAD9; position: relative; overflow: hidden">
+<svg viewBox="0 0 400 400" aria-hidden="true" style="position: absolute; right: -60px; top: -40px; width: 420px; height: 420px" fill="none" stroke="#C9D8BE" stroke-width="1.5"><ellipse cx="200" cy="200" rx="40" ry="36"></ellipse><ellipse cx="196" cy="204" rx="80" ry="72"></ellipse><ellipse cx="192" cy="208" rx="122" ry="110"></ellipse><ellipse cx="188" cy="212" rx="164" ry="150"></ellipse><ellipse cx="184" cy="216" rx="206" ry="190"></ellipse></svg>
+<div style="position: relative; max-width: 1200px; margin: 0 auto; padding: 56px 24px 40px; display: flex; flex-direction: column; gap: 18px; max-width: 1200px">
+<span style="display: inline-flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #7A5C46"><span style="width: 28px; height: 2px; background: #7A5C46; border-radius: 2px"></span>Services</span>
+<h1 style="margin: 0; max-width: 760px; font-family: Fraunces, Georgia, serif; font-weight: 400; font-size: clamp(40px, 5vw, 66px); line-height: 1.05; letter-spacing: -0.015em; color: #33503F">Lorem ipsum dolor sit <em style="font-style: italic; color: #7A5C46">amet</em></h1>
+<p style="margin: 0; max-width: 600px; font-size: 19px; color: #4A463E">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+</div>
+</section>
+<Wave from="#E1EAD9" to="#F6F3EC" shape="fall" />
+
+<section aria-label="List of services" style="max-width: 1100px; margin: 0 auto; padding: 32px 24px 80px; display: flex; flex-direction: column">
+
+<article style="display: flex; flex-wrap: wrap; align-items: center; gap: 48px; padding: 24px 0">
+<div style="flex: 0 0 220px; height: 200px; border-radius: 58% 42% 47% 53% / 46% 52% 48% 54%; background: #E1EAD9; display: flex; align-items: center; justify-content: center"><svg width="72" height="72" viewBox="0 0 28 28" fill="none" stroke="#33503F" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="14" cy="6" r="2.5"></circle><path d="M14 9v8M9 12h10M14 17l-4 7M14 17l4 7"></path></svg></div>
+<div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 12px">
+<span style="font-family: Fraunces, Georgia, serif; font-size: 18px; color: #7A5C46">01</span>
+<h2 style="margin: 0; font-family: Fraunces, Georgia, serif; font-weight: 400; font-size: 34px; line-height: 1.15; color: #33503F">Lorem ipsum dolor</h2>
+<p style="margin: 0; color: #4A463E">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 8px; padding-top: 4px">
+<span style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 999px; background: #EFE4D6; font-size: 14px; color: #4F3B2C"><svg width="16" height="16" viewBox="0 0 28 28" fill="none" stroke="#4F3B2C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="14" cy="14" r="10"></circle><path d="M14 8v6l4 3"></path></svg>[60] min</span>
+<span style="padding: 6px 14px; border-radius: 999px; background: #EFE4D6; font-size: 14px; color: #4F3B2C">[$000]</span>
+<span style="padding: 6px 14px; border-radius: 999px; background: #EFE4D6; font-size: 14px; color: #4F3B2C">Insurance receipt</span>
+</div>
+</div>
+</article>
+<svg viewBox="0 0 1100 24" preserveAspectRatio="none" aria-hidden="true" style="display: block; width: 100%; height: 24px; margin: 16px 0"><path d="M0,12 C140,0 280,24 420,12 S700,0 840,12 S1020,24 1100,12" fill="none" stroke="#D9C3AA" stroke-width="1.5"></path></svg>
+
+<article style="display: flex; flex-wrap: wrap-reverse; align-items: center; gap: 48px; padding: 24px 0">
+<div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 12px">
+<span style="font-family: Fraunces, Georgia, serif; font-size: 18px; color: #7A5C46">02</span>
+<h2 style="margin: 0; font-family: Fraunces, Georgia, serif; font-weight: 400; font-size: 34px; line-height: 1.15; color: #33503F">Consectetur adipiscing</h2>
+<p style="margin: 0; color: #4A463E">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 8px; padding-top: 4px">
+<span style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 999px; background: #EFE4D6; font-size: 14px; color: #4F3B2C"><svg width="16" height="16" viewBox="0 0 28 28" fill="none" stroke="#4F3B2C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="14" cy="14" r="10"></circle><path d="M14 8v6l4 3"></path></svg>[45] min</span>
+<span style="padding: 6px 14px; border-radius: 999px; background: #EFE4D6; font-size: 14px; color: #4F3B2C">[$000]</span>
+<span style="padding: 6px 14px; border-radius: 999px; background: #EFE4D6; font-size: 14px; color: #4F3B2C">Insurance receipt</span>
+</div>
+</div>
+<div style="flex: 0 0 220px; height: 200px; border-radius: 46% 54% 40% 60% / 55% 42% 58% 45%; background: #EFE4D6; display: flex; align-items: center; justify-content: center"><svg width="72" height="72" viewBox="0 0 28 28" fill="none" stroke="#7A5C46" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 24V13M14 13c0-4-3-7-8-7 0 4 3 7 8 7ZM14 16c0-4 3-7 8-7 0 4-3 7-8 7Z"></path></svg></div>
+</article>
+<svg viewBox="0 0 1100 24" preserveAspectRatio="none" aria-hidden="true" style="display: block; width: 100%; height: 24px; margin: 16px 0"><path d="M0,12 C140,24 280,0 420,12 S700,24 840,12 S1020,0 1100,12" fill="none" stroke="#C9D8BE" stroke-width="1.5"></path></svg>
+
+<article style="display: flex; flex-wrap: wrap; align-items: center; gap: 48px; padding: 24px 0">
+<div style="flex: 0 0 220px; height: 200px; border-radius: 52% 48% 60% 40% / 44% 56% 44% 56%; background: #D7E7E3; display: flex; align-items: center; justify-content: center"><svg width="72" height="72" viewBox="0 0 28 28" fill="none" stroke="#33503F" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 23s-9-5.5-9-12a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 6.5-9 12-9 12Z"></path></svg></div>
+<div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 12px">
+<span style="font-family: Fraunces, Georgia, serif; font-size: 18px; color: #7A5C46">03</span>
+<h2 style="margin: 0; font-family: Fraunces, Georgia, serif; font-weight: 400; font-size: 34px; line-height: 1.15; color: #33503F">Sed do eiusmod tempor</h2>
+<p style="margin: 0; color: #4A463E">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 8px; padding-top: 4px">
+<span style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 999px; background: #EFE4D6; font-size: 14px; color: #4F3B2C"><svg width="16" height="16" viewBox="0 0 28 28" fill="none" stroke="#4F3B2C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="14" cy="14" r="10"></circle><path d="M14 8v6l4 3"></path></svg>[60] min</span>
+<span style="padding: 6px 14px; border-radius: 999px; background: #EFE4D6; font-size: 14px; color: #4F3B2C">[$000]</span>
+<span style="padding: 6px 14px; border-radius: 999px; background: #EFE4D6; font-size: 14px; color: #4F3B2C">Insurance receipt</span>
+</div>
+</div>
+</article>
+<svg viewBox="0 0 1100 24" preserveAspectRatio="none" aria-hidden="true" style="display: block; width: 100%; height: 24px; margin: 16px 0"><path d="M0,12 C140,0 280,24 420,12 S700,0 840,12 S1020,24 1100,12" fill="none" stroke="#D9C3AA" stroke-width="1.5"></path></svg>
+
+<article style="display: flex; flex-wrap: wrap-reverse; align-items: center; gap: 48px; padding: 24px 0">
+<div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 12px">
+<span style="font-family: Fraunces, Georgia, serif; font-size: 18px; color: #7A5C46">04</span>
+<h2 style="margin: 0; font-family: Fraunces, Georgia, serif; font-weight: 400; font-size: 34px; line-height: 1.15; color: #33503F">Ut labore et dolore</h2>
+<p style="margin: 0; color: #4A463E">Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 8px; padding-top: 4px">
+<span style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 999px; background: #EFE4D6; font-size: 14px; color: #4F3B2C"><svg width="16" height="16" viewBox="0 0 28 28" fill="none" stroke="#4F3B2C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="14" cy="14" r="10"></circle><path d="M14 8v6l4 3"></path></svg>[60] min</span>
+<span style="padding: 6px 14px; border-radius: 999px; background: #EFE4D6; font-size: 14px; color: #4F3B2C">[$000]</span>
+<span style="padding: 6px 14px; border-radius: 999px; background: #EFE4D6; font-size: 14px; color: #4F3B2C">Insurance receipt</span>
+</div>
+</div>
+<div style="flex: 0 0 220px; height: 200px; border-radius: 60% 40% 52% 48% / 48% 58% 42% 52%; background: #E1EAD9; display: flex; align-items: center; justify-content: center"><svg width="72" height="72" viewBox="0 0 28 28" fill="none" stroke="#33503F" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 22 11 9l5 7 3-4 6 10Z"></path></svg></div>
+</article>
+</section>
+
+<Wave from="#F6F3EC" to="#EFE4D6" shape="ripple" />
+<section style="background: #EFE4D6">
+<div style="max-width: 1200px; margin: 0 auto; padding: 32px 24px 80px; display: flex; flex-direction: column; gap: 48px">
+<div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px; max-width: 700px; margin: 0 auto">
+<span style="font-size: 13px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #7A5C46">Your first visit</span>
+<h2 style="margin: 0; font-family: Fraunces, Georgia, serif; font-weight: 400; font-size: clamp(32px, 3.6vw, 48px); line-height: 1.1; color: #33503F">Lorem ipsum, <em style="font-style: italic">step by step</em></h2>
+</div>
+<div style="position: relative">
+<svg viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true" style="position: absolute; left: 0; right: 0; top: 2px; width: 100%; height: 60px"><path d="M60,30 C200,0 330,60 460,30 S730,0 860,30 S1060,60 1140,30" fill="none" stroke="#C4A98C" stroke-width="2" stroke-dasharray="2 8" stroke-linecap="round"></path></svg>
+<ol style="position: relative; list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 32px">
+<li style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px"><span style="width: 64px; height: 64px; border-radius: 50%; background: #F6F3EC; border: 2px solid #D9C3AA; display: flex; align-items: center; justify-content: center; font-family: Fraunces, Georgia, serif; font-size: 24px; color: #7A5C46">1</span><span style="font-family: Fraunces, Georgia, serif; font-size: 22px; color: #33503F">Lorem ipsum</span><span style="color: #4F3B2C; font-size: 16px">Consectetur adipiscing elit, sed do eiusmod tempor incididunt.</span></li>
+<li style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px"><span style="width: 64px; height: 64px; border-radius: 50%; background: #F6F3EC; border: 2px solid #D9C3AA; display: flex; align-items: center; justify-content: center; font-family: Fraunces, Georgia, serif; font-size: 24px; color: #7A5C46">2</span><span style="font-family: Fraunces, Georgia, serif; font-size: 22px; color: #33503F">Dolor sit amet</span><span style="color: #4F3B2C; font-size: 16px">Ut enim ad minim veniam, quis nostrud exercitation ullamco.</span></li>
+<li style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px"><span style="width: 64px; height: 64px; border-radius: 50%; background: #F6F3EC; border: 2px solid #D9C3AA; display: flex; align-items: center; justify-content: center; font-family: Fraunces, Georgia, serif; font-size: 24px; color: #7A5C46">3</span><span style="font-family: Fraunces, Georgia, serif; font-size: 22px; color: #33503F">Consectetur</span><span style="color: #4F3B2C; font-size: 16px">Duis aute irure dolor in reprehenderit in voluptate velit.</span></li>
+<li style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px"><span style="width: 64px; height: 64px; border-radius: 50%; background: #F6F3EC; border: 2px solid #D9C3AA; display: flex; align-items: center; justify-content: center; font-family: Fraunces, Georgia, serif; font-size: 24px; color: #7A5C46">4</span><span style="font-family: Fraunces, Georgia, serif; font-size: 22px; color: #33503F">Adipiscing elit</span><span style="color: #4F3B2C; font-size: 16px">Excepteur sint occaecat cupidatat non proident, sunt in culpa.</span></li>
+</ol>
+</div>
+<div style="max-width: 760px; margin: 0 auto; background: #F6F3EC; border-radius: 28px; padding: 24px 28px; display: flex; gap: 16px; align-items: flex-start">
+<svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="#7A5C46" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 28px; margin-top: 2px"><circle cx="14" cy="14" r="10"></circle><path d="M14 13v6M14 9v.5"></path></svg>
+<p style="margin: 0; color: #4A463E; font-size: 16px">Lorem ipsum dolor sit amet: sed ut perspiciatis unde omnis iste natus error sit voluptatem. Nemo enim ipsam voluptatem quia voluptas sit aspernatur.</p>
+</div>
+</div>
+</section>
+
+<Wave from="#EFE4D6" to="#2F4A3A" shape="rise" opacity={0.35} />
+<section style="background: #2F4A3A">
+<div style="max-width: 760px; margin: 0 auto; padding: 40px 24px 72px; display: flex; flex-direction: column; align-items: center; gap: 20px; text-align: center">
+<h2 style="margin: 0; font-family: Fraunces, Georgia, serif; font-weight: 400; font-size: clamp(32px, 3.6vw, 50px); line-height: 1.1; color: #F6F3EC">Lorem ipsum dolor <em style="font-style: italic; color: #D9C3AA">sit amet?</em></h2>
+<p style="margin: 0; color: #CFDCC6; font-size: 18px">Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.</p>
+<a href={site.goRendezVousUrl} data-book-now style="margin-top: 8px; display: inline-flex; align-items: center; gap: 10px; padding: 16px 28px; border-radius: 999px; background: #E1EAD9; color: #2F4A3A; text-decoration: none; font-weight: 600">See availabilities <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2F4A3A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+</div>
+</section>
+</main>
+</BaseLayout>

@@ -1,0 +1,44 @@
+---
+description: Project rules for the Montreal osteopath website (Astro, static)
+alwaysApply: true
+---
+
+# Osteopath website — project rules
+
+## What this is
+A static, multi-page Astro site for a solo osteopath practising in Montréal, Québec.
+Pages: `/` (home), `/services`, `/about`, `/osteopathy` (foundations), `/booking` (Go Rendez-Vous).
+Copy is lorem ipsum for now; anything in `[brackets]` is a placeholder for real content.
+
+## The design is approved — preserve it
+- The markup in `src/pages/*.astro` and `src/components/*.astro` was ported 1:1 from an approved mockup. Do not restyle, restructure or "clean up" markup unless explicitly asked.
+- Styling is **inline `style="…"` attributes** on purpose. Keep using inline styles in the same manner for new markup unless asked to migrate to classes. Don't introduce Tailwind, CSS frameworks or UI libraries.
+- When adding a section, copy the patterns of an existing one (eyebrow → Fraunces heading → paragraph; cards with one asymmetric 40px corner; blob-shaped image slots).
+
+## Visual language (nature: trees and a flowing river)
+- **Dividers are always curved.** Between sections use `<Wave from="<colour above>" to="<colour below>" shape="rise|fall|ripple|drift" />`. Inside sections use the thin wavy-line SVG rule. Never use straight `<hr>` or flat borders as dividers (the footer's bottom rule is the only exception).
+- Motifs: tree rings (concentric ellipses), roots, leaves, river lines. Image placeholders are organic blobs (`border-radius: 58% 42% 47% 53% / 46% 52% 48% 54%` style).
+- Palette (pastel green + brown; see `src/styles/tokens.css`):
+  - grounds: linen `#F6F3EC`, sage `#E1EAD9`, sage-soft `#F3F6EF`, sand `#EFE4D6`, river `#D7E7E3`
+  - decor: moss `#C9D8BE`, moss-deep `#B3C7A7`, clay `#D9C3AA`
+  - ink: forest `#33503F` (headings/buttons), forest-deep `#2F4A3A` (CTA band), bark `#7A5C46` (eyebrows/accents), bark-deep `#4F3B2C` (text on sand), ink `#3A3631`, ink-soft `#4A463E`, muted `#625C53`
+- Type: **Fraunces** (display, weight 400–500, italic `<em>` for accent words) + **Figtree** (body, 17px / 1.65). Loaded from Google Fonts in `BaseLayout.astro`.
+- Buttons are 999px pills. Primary = forest bg + white text; secondary = 1.5px `#9DB394` outline.
+- No emoji, no gradients, no drop-shadow-heavy cards.
+
+## Structure
+- `src/layouts/BaseLayout.astro` — `<head>`, header, footer, and the per-page `themes` map (header colour, active nav pill, wave into footer). New pages must add an entry there and to `nav` in `src/data/site.ts` if they belong in the menu.
+- `src/data/site.ts` — practice name, address, phone, email, hours, legal line, Go Rendez-Vous URL. Header/footer read from here; update details here, not in markup.
+- `src/data/faqs.ts`, `src/data/availability.ts` (mock only).
+- `src/components/GoRendezVousWidget.astro` — **placeholder** for the Go Rendez-Vous scheduler. Replace the inside of the `data-grv-embed` block with the official embed snippet from her Go Rendez-Vous account; keep the outer card. Never invent Go Rendez-Vous URLs, script tags or API calls — ask for the real snippet.
+- Interactivity is tiny vanilla JS in component `<script>` tags. Don't add React/Vue/Svelte islands unless asked.
+
+## Quality bar
+- Accessible: real `<a>`/`<button>`, labels on inputs, `aria-hidden` on decorative SVG, `aria-label` on icon-only buttons, text contrast ≥ 4.5:1, touch targets ≥ 44px.
+- Responsive: layouts use `flex-wrap` and `repeat(auto-fit, minmax(…))`; check every change at ~375px wide.
+- Static output only (`output: 'static'`); `npm run build` must pass.
+
+## Québec specifics
+- The site will be bilingual. French must be available and should be the default language (Québec's Charter of the French language). EN is secondary.
+- A privacy policy page is required under Québec's Law 25 (the footer already links to it).
+- Health-professional advertising should stay factual: no testimonials promising results, no cure claims.

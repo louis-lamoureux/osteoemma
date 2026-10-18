@@ -1,0 +1,68 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Wave from '../components/Wave.astro';
+import GoRendezVousWidget from '../components/GoRendezVousWidget.astro';
+import type { PageKey } from '../data/site';
+import '../styles/tokens.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  current: PageKey;
+}
+
+/**
+ * Per-page header colours and the wave that leads into the footer.
+ * The header blends into each page's hero; the footer wave starts from
+ * whatever colour the page's last section ends on.
+ */
+const themes: Record<PageKey, {
+  headerBg: string;
+  logoFill: string;
+  activeBg: string;
+  footerFrom: string;
+  footerShape: 'rise' | 'fall' | 'ripple' | 'drift';
+  footerOpacity: number;
+}> = {
+  home:       { headerBg: '#F6F3EC', logoFill: '#E1EAD9', activeBg: '#E1EAD9', footerFrom: '#2F4A3A', footerShape: 'fall',   footerOpacity: 0.45 },
+  services:   { headerBg: '#E1EAD9', logoFill: '#F3F6EF', activeBg: '#F3F6EF', footerFrom: '#2F4A3A', footerShape: 'fall',   footerOpacity: 0.45 },
+  about:      { headerBg: '#EFE4D6', logoFill: '#E1EAD9', activeBg: '#F6F3EC', footerFrom: '#2F4A3A', footerShape: 'fall',   footerOpacity: 0.45 },
+  osteopathy: { headerBg: '#F6F3EC', logoFill: '#E1EAD9', activeBg: '#E1EAD9', footerFrom: '#2F4A3A', footerShape: 'fall',   footerOpacity: 0.45 },
+  booking:    { headerBg: '#E1EAD9', logoFill: '#F3F6EF', activeBg: '#F3F6EF', footerFrom: '#F6F3EC', footerShape: 'ripple', footerOpacity: 0.55 },
+};
+
+const {
+  title,
+  description = 'Ostéopathe à Montréal — lorem ipsum dolor sit amet.',
+  current,
+} = Astro.props;
+const t = themes[current];
+---
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{title}</title>
+<meta name="description" content={description}>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Figtree:wght@400;500;600&display=swap">
+</head>
+<body>
+<div style="font-family: Figtree, system-ui, sans-serif; color: #3A3631; background: #F6F3EC; font-size: 17px; line-height: 1.65">
+<Header current={current} bg={t.headerBg} logoFill={t.logoFill} activeBg={t.activeBg} />
+<slot />
+<Wave from={t.footerFrom} to="#EFE4D6" shape={t.footerShape} opacity={t.footerOpacity} />
+<Footer />
+<GoRendezVousWidget />
+</div>
+</body>
+</html>
+
+<style is:global>
+body{margin:0;background:#F6F3EC}
+a{color:#33503F}a:hover{color:#7A5C46}
+</style>

@@ -1,0 +1,52 @@
+---
+/**
+ * Accordion: one question open at a time (the first by default).
+ * Rendered as static HTML; a few lines of vanilla JS handle toggling.
+ */
+interface Props {
+  items: { q: string; a: string }[];
+  defaultOpen?: number;
+}
+
+const { items, defaultOpen = 0 } = Astro.props;
+---
+{items.map((item, i) => {
+  const open = i === defaultOpen;
+  return (
+<div style="background: #F6F3EC; border-radius: 24px; overflow: hidden" data-faq-item>
+<button type="button" id={`faq-q-${i}`} aria-controls={`faq-a-${i}`} aria-expanded={open ? 'true' : 'false'} data-faq-toggle style="width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 24px; background: transparent; border: 0; cursor: pointer; text-align: left; font-family: Fraunces, Georgia, serif; font-size: 21px; color: #33503F; min-height: 64px">
+<span>{item.q}</span>
+<span style="flex: 0 0 36px; width: 36px; height: 36px; border-radius: 50%; background: #E1EAD9; display: flex; align-items: center; justify-content: center">
+<span class="faq-icon" data-faq-minus hidden={!open}><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#33503F" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M3 8h10"></path></svg></span>
+<span class="faq-icon" data-faq-plus hidden={open}><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#33503F" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M3 8h10M8 3v10"></path></svg></span>
+</span>
+</button>
+<div id={`faq-a-${i}`} role="region" aria-labelledby={`faq-q-${i}`} data-faq-answer hidden={!open} style="padding: 0 24px 24px; color: #4A463E; font-size: 16px">{item.a}</div>
+</div>
+  );
+})}
+
+<style>
+  .faq-icon { display: flex; }
+  .faq-icon[hidden] { display: none; }
+  [data-faq-answer][hidden] { display: none; }
+</style>
+
+<script>
+  const items = Array.from(document.querySelectorAll<HTMLElement>('[data-faq-item]'));
+
+  function setOpen(item: HTMLElement, open: boolean) {
+    item.querySelector('[data-faq-toggle]')?.setAttribute('aria-expanded', String(open));
+    item.querySelector<HTMLElement>('[data-faq-answer]')!.hidden = !open;
+    item.querySelector<HTMLElement>('[data-faq-minus]')!.hidden = !open;
+    item.querySelector<HTMLElement>('[data-faq-plus]')!.hidden = open;
+  }
+
+  items.forEach((item) => {
+    item.querySelector('[data-faq-toggle]')?.addEventListener('click', () => {
+      const wasOpen = item.querySelector('[data-faq-toggle]')?.getAttribute('aria-expanded') === 'true';
+      items.forEach((other) => setOpen(other, false));
+      if (!wasOpen) setOpen(item, true);
+    });
+  });
+</script>

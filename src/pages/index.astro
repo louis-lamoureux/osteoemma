@@ -1,28 +1,34 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Wave from '../components/Wave.astro';
+import ReviewCarousel from '../components/ReviewCarousel.astro';
 import { site } from '../data/site';
+import portrait from '../assets/provider.png';
+import { localePath, useTranslations, type Locale } from '../i18n/utils';
+
+interface Props {
+  lang?: Locale;
+}
+
+const { lang = 'fr' } = Astro.props;
+const t = useTranslations(lang);
 ---
-<BaseLayout title="Home — Lorem Ipsum, Osteopath" current="home">
+<BaseLayout title={t('titleHome')} current="home" lang={lang}>
 <main>
 <section style="max-width: 1200px; margin: 0 auto; padding: 40px 24px 80px; display: flex; flex-wrap: wrap; align-items: center; gap: 56px">
 <div style="flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 24px">
-<span style="display: inline-flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #7A5C46"><span style="width: 28px; height: 2px; background: #7A5C46; border-radius: 2px"></span>Ostéopathie à Montréal</span>
-<h1 style="margin: 0; font-family: Fraunces, Georgia, serif; font-weight: 400; font-size: clamp(42px, 5.4vw, 74px); line-height: 1.04; letter-spacing: -0.015em; color: #33503F">Lorem ipsum dolor sit <em style="font-style: italic; color: #7A5C46">amet</em>, consectetur adipiscing.</h1>
+<span style="display: inline-flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #7A5C46"><span style="width: 28px; height: 2px; background: #7A5C46; border-radius: 2px"></span>{t('homeEyebrow')}</span>
+<h1 style="margin: 0; font-family: Fraunces, Georgia, serif; font-weight: 400; font-size: clamp(42px, 5.4vw, 74px); line-height: 1.04; letter-spacing: -0.015em; color: #33503F">{t('homeHeadline')} <em style="font-style: italic; color: #7A5C46">{t('homeHeadlineEmphasis')}</em></h1>
 <p style="margin: 0; font-size: 19px; max-width: 520px; color: #4A463E">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore.</p>
 <div style="display: flex; flex-wrap: wrap; gap: 12px; padding-top: 8px">
-<a href={site.goRendezVousUrl} data-book-now style="display: inline-flex; align-items: center; gap: 10px; padding: 16px 26px; border-radius: 999px; background: #33503F; color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 16px">See availabilities <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
-<a href="/osteopathy" style="display: inline-flex; align-items: center; padding: 16px 26px; border-radius: 999px; border: 1.5px solid #9DB394; color: #33503F; text-decoration: none; font-weight: 600; font-size: 16px">What is osteopathy?</a>
+<a href={site.goRendezVousUrl} data-book-now style="display: inline-flex; align-items: center; gap: 10px; padding: 16px 26px; border-radius: 999px; background: #33503F; color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 16px">{t('seeAvailabilities')} <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+<a href={localePath('/osteopathy', lang)} style="display: inline-flex; align-items: center; padding: 16px 26px; border-radius: 999px; border: 1.5px solid #9DB394; color: #33503F; text-decoration: none; font-weight: 600; font-size: 16px">{t('whatIsOsteopathy')}</a>
 </div>
 </div>
 <div style="flex: 1 1 380px; min-width: 0; position: relative; display: flex; justify-content: center">
-<div style="width: 100%; max-width: 460px; aspect-ratio: 4 / 5; border-radius: 58% 42% 47% 53% / 46% 52% 48% 54%; background: #C9D8BE; position: relative; overflow: hidden; display: flex; align-items: flex-end; justify-content: center">
-<svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%" fill="none" stroke="#B3C7A7" stroke-width="1.5"><ellipse cx="210" cy="230" rx="34" ry="30"></ellipse><ellipse cx="206" cy="232" rx="72" ry="64"></ellipse><ellipse cx="202" cy="236" rx="112" ry="100"></ellipse><ellipse cx="198" cy="240" rx="152" ry="138"></ellipse><ellipse cx="194" cy="244" rx="194" ry="178"></ellipse><ellipse cx="190" cy="248" rx="236" ry="220"></ellipse></svg>
-<span style="position: relative; margin-bottom: 64px; padding: 8px 16px; border-radius: 999px; background: #F6F3EC; font-size: 13px; color: #4A463E">Photo — portrait</span>
-</div>
-<div style="position: absolute; left: 0; bottom: 28px; background: #FFFFFF; border-radius: 20px; padding: 14px 20px 14px 14px; box-shadow: 0 14px 36px rgba(51, 80, 63, 0.14); display: flex; gap: 14px; align-items: center">
-<span style="width: 46px; height: 46px; border-radius: 50%; background: #E1EAD9; display: flex; align-items: center; justify-content: center"><svg width="24" height="24" viewBox="0 0 28 28" fill="none" stroke="#33503F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="6" width="20" height="18" rx="3"></rect><path d="M4 11h20M10 3v5M18 3v5"></path></svg></span>
-<span style="display: flex; flex-direction: column; line-height: 1.3"><span style="font-size: 13px; color: #625C53">Next availability</span><span style="font-weight: 600; color: #33503F">[Tue 20 Oct · 10:30]</span></span>
+<div style="width: 85%; max-width: 391px; aspect-ratio: 4 / 5; border-radius: 58% 42% 47% 53% / 46% 52% 48% 54%; background: #F6F3EC; position: relative; overflow: hidden">
+<img src={portrait.src} width={portrait.width} height={portrait.height} alt={site.name} style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 22%">
+<div aria-hidden="true" style="position: absolute; inset: 0; border-radius: inherit; pointer-events: none; box-shadow: inset 0 0 36px 14px #F6F3EC; mask-image: linear-gradient(to bottom, #000 0% 58%, transparent 74%); -webkit-mask-image: linear-gradient(to bottom, #000 0% 58%, transparent 74%)"></div>
 </div>
 </div>
 </section>
@@ -59,58 +65,51 @@ import { site } from '../data/site';
 <section style="max-width: 1200px; margin: 0 auto; padding: 40px 24px 88px; display: flex; flex-direction: column; gap: 40px">
 <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 20px">
 <div style="display: flex; flex-direction: column; gap: 12px; max-width: 620px">
-<span style="font-size: 13px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #7A5C46">Services</span>
+<span style="font-size: 13px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #7A5C46">{t('navServices')}</span>
 <h2 style="margin: 0; font-family: Fraunces, Georgia, serif; font-weight: 400; font-size: clamp(32px, 3.6vw, 50px); line-height: 1.1; color: #33503F">Lorem ipsum dolor sit amet</h2>
 </div>
-<a href="/services" style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 4px; font-weight: 600; text-decoration: none; color: #33503F">All services <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#33503F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+<a href={localePath('/services', lang)} style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 4px; font-weight: 600; text-decoration: none; color: #33503F">{t('allServices')} <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#33503F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
 </div>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px">
-<a href="/services" style="text-decoration: none; color: #3A3631; background: #EFE4D6; border-radius: 40px 28px 28px 28px; padding: 28px; display: flex; flex-direction: column; gap: 14px; min-height: 260px">
+<a href={localePath('/services', lang)} style="text-decoration: none; color: #3A3631; background: #EFE4D6; border-radius: 40px 28px 28px 28px; padding: 28px; display: flex; flex-direction: column; gap: 14px; min-height: 260px">
 <span style="width: 56px; height: 56px; border-radius: 50%; background: #F6F3EC; display: flex; align-items: center; justify-content: center"><svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="#7A5C46" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="14" cy="6" r="2.5"></circle><path d="M14 9v8M9 12h10M14 17l-4 7M14 17l4 7"></path></svg></span>
 <span style="font-family: Fraunces, Georgia, serif; font-size: 23px; font-weight: 500; color: #33503F">Lorem ipsum</span>
 <span style="color: #4A463E; flex-grow: 1">Dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor.</span>
-<span style="font-weight: 600; color: #7A5C46">Learn more →</span>
+<span style="font-weight: 600; color: #7A5C46">{t('learnMore')} →</span>
 </a>
-<a href="/services" style="text-decoration: none; color: #3A3631; background: #EFE4D6; border-radius: 28px 40px 28px 28px; padding: 28px; display: flex; flex-direction: column; gap: 14px; min-height: 260px">
+<a href={localePath('/services', lang)} style="text-decoration: none; color: #3A3631; background: #EFE4D6; border-radius: 28px 40px 28px 28px; padding: 28px; display: flex; flex-direction: column; gap: 14px; min-height: 260px">
 <span style="width: 56px; height: 56px; border-radius: 50%; background: #F6F3EC; display: flex; align-items: center; justify-content: center"><svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="#7A5C46" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 24V13M14 13c0-4-3-7-8-7 0 4 3 7 8 7ZM14 16c0-4 3-7 8-7 0 4-3 7-8 7Z"></path></svg></span>
 <span style="font-family: Fraunces, Georgia, serif; font-size: 23px; font-weight: 500; color: #33503F">Consectetur elit</span>
 <span style="color: #4A463E; flex-grow: 1">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</span>
-<span style="font-weight: 600; color: #7A5C46">Learn more →</span>
+<span style="font-weight: 600; color: #7A5C46">{t('learnMore')} →</span>
 </a>
-<a href="/services" style="text-decoration: none; color: #3A3631; background: #EFE4D6; border-radius: 28px 28px 40px 28px; padding: 28px; display: flex; flex-direction: column; gap: 14px; min-height: 260px">
+<a href={localePath('/services', lang)} style="text-decoration: none; color: #3A3631; background: #EFE4D6; border-radius: 28px 28px 40px 28px; padding: 28px; display: flex; flex-direction: column; gap: 14px; min-height: 260px">
 <span style="width: 56px; height: 56px; border-radius: 50%; background: #F6F3EC; display: flex; align-items: center; justify-content: center"><svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="#7A5C46" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 23s-9-5.5-9-12a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 6.5-9 12-9 12Z"></path></svg></span>
 <span style="font-family: Fraunces, Georgia, serif; font-size: 23px; font-weight: 500; color: #33503F">Sed do eiusmod</span>
 <span style="color: #4A463E; flex-grow: 1">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.</span>
-<span style="font-weight: 600; color: #7A5C46">Learn more →</span>
+<span style="font-weight: 600; color: #7A5C46">{t('learnMore')} →</span>
 </a>
-<a href="/services" style="text-decoration: none; color: #3A3631; background: #EFE4D6; border-radius: 28px 28px 28px 40px; padding: 28px; display: flex; flex-direction: column; gap: 14px; min-height: 260px">
+<a href={localePath('/services', lang)} style="text-decoration: none; color: #3A3631; background: #EFE4D6; border-radius: 28px 28px 28px 40px; padding: 28px; display: flex; flex-direction: column; gap: 14px; min-height: 260px">
 <span style="width: 56px; height: 56px; border-radius: 50%; background: #F6F3EC; display: flex; align-items: center; justify-content: center"><svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="#7A5C46" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 22 11 9l5 7 3-4 6 10Z"></path></svg></span>
 <span style="font-family: Fraunces, Georgia, serif; font-size: 23px; font-weight: 500; color: #33503F">Tempor incidunt</span>
 <span style="color: #4A463E; flex-grow: 1">Excepteur sint occaecat cupidatat non proident, sunt in culpa.</span>
-<span style="font-weight: 600; color: #7A5C46">Learn more →</span>
+<span style="font-weight: 600; color: #7A5C46">{t('learnMore')} →</span>
 </a>
 </div>
 </section>
 
 <Wave from="#F6F3EC" to="#EFE4D6" shape="ripple" />
-<section style="background: #EFE4D6; position: relative; overflow: hidden">
-<svg viewBox="0 0 1440 360" preserveAspectRatio="none" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%" fill="none" stroke="#E2D2BE" stroke-width="2"><path d="M0,120 C240,70 480,170 720,120 S1200,70 1440,120"></path><path d="M0,160 C240,110 480,210 720,160 S1200,110 1440,160"></path><path d="M0,200 C240,150 480,250 720,200 S1200,150 1440,200"></path><path d="M0,240 C240,190 480,290 720,240 S1200,190 1440,240"></path></svg>
-<figure style="position: relative; max-width: 860px; margin: 0 auto; padding: 48px 24px 72px; display: flex; flex-direction: column; align-items: center; gap: 22px; text-align: center">
-<svg width="40" height="40" viewBox="0 0 28 28" fill="none" stroke="#7A5C46" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3v11M14 14c-3 2-6 3-9 3M14 14c3 2 6 3 9 3M14 14v10M14 18c-2 2-4 4-7 5M14 18c2 2 4 4 7 5"></path></svg>
-<blockquote style="margin: 0; font-family: Fraunces, Georgia, serif; font-style: italic; font-weight: 300; font-size: clamp(26px, 3vw, 38px); line-height: 1.3; color: #4F3B2C">“Lorem ipsum dolor sit amet — like a river finding its course, consectetur adipiscing elit sed do eiusmod.”</blockquote>
-<figcaption style="font-size: 14px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #7A5C46">— Lorem Ipsum, D.O.</figcaption>
-</figure>
-</section>
+<ReviewCarousel lang={lang} />
 <Wave from="#EFE4D6" to="#F6F3EC" shape="drift" />
 
 <section style="max-width: 1200px; margin: 0 auto; padding: 48px 24px 96px; display: flex; flex-wrap: wrap; align-items: center; gap: 64px">
 <div style="flex: 1 1 360px; min-width: 0; display: flex; justify-content: center">
 <div style="width: 100%; max-width: 440px; aspect-ratio: 1 / 1; border-radius: 46% 54% 40% 60% / 55% 42% 58% 45%; background: #D9C3AA; display: flex; align-items: center; justify-content: center">
-<span style="padding: 8px 16px; border-radius: 999px; background: #F6F3EC; font-size: 13px; color: #4A463E">Photo — in the treatment room</span>
+<span style="padding: 8px 16px; border-radius: 999px; background: #F6F3EC; font-size: 13px; color: #4A463E">{t('photoTreatmentRoom')}</span>
 </div>
 </div>
 <div style="flex: 1 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 20px">
-<span style="font-size: 13px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #7A5C46">About</span>
+<span style="font-size: 13px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #7A5C46">{t('navAbout')}</span>
 <h2 style="margin: 0; font-family: Fraunces, Georgia, serif; font-weight: 400; font-size: clamp(32px, 3.6vw, 50px); line-height: 1.1; color: #33503F">Lorem ipsum, <em style="font-style: italic">dolor sit</em> amet</h2>
 <p style="margin: 0; color: #4A463E">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Donec ullamcorper nulla non metus auctor fringilla.</p>
 <p style="margin: 0; color: #4A463E">Cras mattis consectetur purus sit amet fermentum. Maecenas faucibus mollis interdum, vestibulum id ligula porta felis euismod semper.</p>
@@ -119,7 +118,7 @@ import { site } from '../data/site';
 <span style="padding: 8px 14px; border-radius: 999px; background: #E1EAD9; color: #33503F; font-size: 14px; font-weight: 500">[Association] member</span>
 <span style="padding: 8px 14px; border-radius: 999px; background: #E1EAD9; color: #33503F; font-size: 14px; font-weight: 500">Français · English</span>
 </div>
-<a href="/about" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; padding: 12px 0; font-weight: 600; text-decoration: none; color: #33503F">Read her story <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#33503F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+<a href={localePath('/about', lang)} style="align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; padding: 12px 0; font-weight: 600; text-decoration: none; color: #33503F">{t('readHerStory')} <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#33503F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
 </div>
 </section>
 
@@ -128,7 +127,7 @@ import { site } from '../data/site';
 <div style="max-width: 760px; margin: 0 auto; padding: 40px 24px 72px; display: flex; flex-direction: column; align-items: center; gap: 20px; text-align: center">
 <h2 style="margin: 0; font-family: Fraunces, Georgia, serif; font-weight: 400; font-size: clamp(32px, 3.6vw, 50px); line-height: 1.1; color: #F6F3EC">Lorem ipsum dolor <em style="font-style: italic; color: #D9C3AA">sit amet?</em></h2>
 <p style="margin: 0; color: #CFDCC6; font-size: 18px">Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.</p>
-<a href={site.goRendezVousUrl} data-book-now style="margin-top: 8px; display: inline-flex; align-items: center; gap: 10px; padding: 16px 28px; border-radius: 999px; background: #E1EAD9; color: #2F4A3A; text-decoration: none; font-weight: 600">See availabilities <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2F4A3A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+<a href={site.goRendezVousUrl} data-book-now style="margin-top: 8px; display: inline-flex; align-items: center; gap: 10px; padding: 16px 28px; border-radius: 999px; background: #E1EAD9; color: #2F4A3A; text-decoration: none; font-weight: 600">{t('seeAvailabilities')} <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2F4A3A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
 </div>
 </section>
 </main>

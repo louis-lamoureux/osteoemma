@@ -4,12 +4,14 @@ import Footer from '../components/Footer.astro';
 import Wave from '../components/Wave.astro';
 import GoRendezVousWidget from '../components/GoRendezVousWidget.astro';
 import type { PageKey } from '../data/site';
+import { swapLocale, useTranslations, type Locale } from '../i18n/utils';
 import '../styles/tokens.css';
 
 interface Props {
   title: string;
   description?: string;
   current: PageKey;
+  lang: Locale;
 }
 
 /**
@@ -34,18 +36,25 @@ const themes: Record<PageKey, {
 
 const {
   title,
-  description = 'Ostéopathe à Montréal — lorem ipsum dolor sit amet.',
+  description,
   current,
+  lang,
 } = Astro.props;
 const t = themes[current];
+const translate = useTranslations(lang);
+const metaDescription = description ?? translate('description');
+const pathname = Astro.url.pathname;
 ---
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title}</title>
-<meta name="description" content={description}>
+<meta name="description" content={metaDescription}>
+<link rel="alternate" hreflang="fr" href={swapLocale(pathname, 'fr')}>
+<link rel="alternate" hreflang="en" href={swapLocale(pathname, 'en')}>
+<link rel="alternate" hreflang="x-default" href={swapLocale(pathname, 'fr')}>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -53,11 +62,11 @@ const t = themes[current];
 </head>
 <body>
 <div style="font-family: Figtree, system-ui, sans-serif; color: #3A3631; background: #F6F3EC; font-size: 17px; line-height: 1.65">
-<Header current={current} bg={t.headerBg} logoFill={t.logoFill} activeBg={t.activeBg} />
+<Header current={current} lang={lang} bg={t.headerBg} logoFill={t.logoFill} activeBg={t.activeBg} />
 <slot />
 <Wave from={t.footerFrom} to="#EFE4D6" shape={t.footerShape} opacity={t.footerOpacity} />
-<Footer />
-<GoRendezVousWidget />
+<Footer lang={lang} />
+<GoRendezVousWidget lang={lang} />
 </div>
 </body>
 </html>

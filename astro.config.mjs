@@ -7,4 +7,11 @@ export default defineConfig({
   site: 'https://example.com',
   // Pure static output: every page is pre-rendered to plain HTML.
   output: 'static',
+  i18n: {
+    defaultLocale: 'fr',
+    locales: ['fr', 'en'],
+    routing: {
+      prefixDefaultLocale: false,
+    },
+  },
 });

@@ -2,13 +2,21 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Wave from '../components/Wave.astro';
 import { site } from '../data/site';
+import { useTranslations, type Locale } from '../i18n/utils';
+
+interface Props {
+  lang?: Locale;
+}
+
+const { lang = 'fr' } = Astro.props;
+const t = useTranslations(lang);
 ---
-<BaseLayout title="About — Lorem Ipsum, Osteopath" current="about">
+<BaseLayout title={t('titleAbout')} current="about" lang={lang}>
 <main>
 <section style="background: #EFE4D6">
 <div style="max-width: 1200px; margin: 0 auto; padding: 40px 24px 32px; display: flex; flex-wrap: wrap; align-items: center; gap: 56px">
 <div style="flex: 1 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 20px">
-<span style="display: inline-flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #7A5C46"><span style="width: 28px; height: 2px; background: #7A5C46; border-radius: 2px"></span>About</span>
+<span style="display: inline-flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #7A5C46"><span style="width: 28px; height: 2px; background: #7A5C46; border-radius: 2px"></span>{t('navAbout')}</span>
 <h1 style="margin: 0; font-family: Fraunces, Georgia, serif; font-weight: 400; font-size: clamp(40px, 5vw, 66px); line-height: 1.05; letter-spacing: -0.015em; color: #33503F">Lorem Ipsum, <em style="font-style: italic; color: #7A5C46">D.O.</em></h1>
 <p style="margin: 0; font-size: 19px; color: #4F3B2C; max-width: 540px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet, sed ut perspiciatis unde omnis.</p>
 <div style="display: flex; flex-wrap: wrap; gap: 10px">
@@ -19,7 +27,7 @@ import { site } from '../data/site';
 <div style="flex: 1 1 360px; min-width: 0; display: flex; justify-content: center">
 <div style="width: 100%; max-width: 420px; aspect-ratio: 4 / 5; border-radius: 46% 54% 40% 60% / 55% 42% 58% 45%; background: #D9C3AA; position: relative; overflow: hidden; display: flex; align-items: flex-end; justify-content: center">
 <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%" fill="none" stroke="#CDB497" stroke-width="1.5"><ellipse cx="200" cy="250" rx="40" ry="36"></ellipse><ellipse cx="196" cy="254" rx="84" ry="76"></ellipse><ellipse cx="192" cy="258" rx="128" ry="116"></ellipse><ellipse cx="188" cy="262" rx="172" ry="158"></ellipse><ellipse cx="184" cy="266" rx="216" ry="200"></ellipse></svg>
-<span style="position: relative; margin-bottom: 60px; padding: 8px 16px; border-radius: 999px; background: #F6F3EC; font-size: 13px; color: #4A463E">Photo — portrait</span>
+<span style="position: relative; margin-bottom: 60px; padding: 8px 16px; border-radius: 999px; background: #F6F3EC; font-size: 13px; color: #4A463E">{t('photoPortrait')}</span>
 </div>
 </div>
 </div>
@@ -119,7 +127,7 @@ import { site } from '../data/site';
 <div style="max-width: 760px; margin: 0 auto; padding: 40px 24px 72px; display: flex; flex-direction: column; align-items: center; gap: 20px; text-align: center">
 <h2 style="margin: 0; font-family: Fraunces, Georgia, serif; font-weight: 400; font-size: clamp(32px, 3.6vw, 50px); line-height: 1.1; color: #F6F3EC">Lorem ipsum dolor <em style="font-style: italic; color: #D9C3AA">sit amet?</em></h2>
 <p style="margin: 0; color: #CFDCC6; font-size: 18px">Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.</p>
-<a href={site.goRendezVousUrl} data-book-now style="margin-top: 8px; display: inline-flex; align-items: center; gap: 10px; padding: 16px 28px; border-radius: 999px; background: #E1EAD9; color: #2F4A3A; text-decoration: none; font-weight: 600">See availabilities <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2F4A3A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+<a href={site.goRendezVousUrl} data-book-now style="margin-top: 8px; display: inline-flex; align-items: center; gap: 10px; padding: 16px 28px; border-radius: 999px; background: #E1EAD9; color: #2F4A3A; text-decoration: none; font-weight: 600">{t('seeAvailabilities')} <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2F4A3A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
 </div>
 </section>
 </main>

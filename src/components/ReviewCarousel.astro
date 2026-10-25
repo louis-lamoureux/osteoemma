@@ -1,0 +1,89 @@
+---
+import { luminoProfileUrl, reviews as luminoReviews } from '../data/reviews';
+import { useTranslations, type Locale } from '../i18n/utils';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const reviews = luminoReviews.filter((review) => review.rating === 5);
+---
+
+<section aria-roledescription="carousel" aria-label={t('reviewsLabel')} data-reviews style="background: #EFE4D6; position: relative; overflow: hidden">
+  <svg viewBox="0 0 1440 360" preserveAspectRatio="none" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%" fill="none" stroke="#E2D2BE" stroke-width="2"><path d="M0,120 C240,70 480,170 720,120 S1200,70 1440,120"></path><path d="M0,160 C240,110 480,210 720,160 S1200,110 1440,160"></path><path d="M0,200 C240,150 480,250 720,200 S1200,150 1440,200"></path><path d="M0,240 C240,190 480,290 720,240 S1200,190 1440,240"></path></svg>
+  <div style="position: relative; max-width: 860px; margin: 0 auto; padding: 48px 24px 72px; display: flex; flex-direction: column; align-items: center; gap: 22px; text-align: center">
+    <svg width="40" height="40" viewBox="0 0 28 28" fill="none" stroke="#7A5C46" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3v11M14 14c-3 2-6 3-9 3M14 14c3 2 6 3 9 3M14 14v10M14 18c-2 2-4 4-7 5M14 18c2 2 4 4 7 5"></path></svg>
+    <p style="margin: 0; font-size: 13px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #7A5C46">Lumino Santé</p>
+    {reviews.map((review, index) => (
+      <figure data-review hidden={index !== 0} style="margin: 0; display: flex; flex-direction: column; align-items: center; gap: 22px">
+        <div aria-hidden="true" style="display: flex; justify-content: center; gap: 6px">
+          {Array.from({ length: 5 }, (_, star) => (
+            <svg viewBox="0 0 16 16" width="14" height="14" style={`display: block; fill: ${star < review.rating ? '#7A5C46' : 'transparent'}; stroke: #7A5C46`}>
+              <path d="M8 1.4 9.9 5.8l4.7.4-3.6 3.1 1.1 4.6L8 11.6 3.9 13.9l1.1-4.6L1.4 6.2l4.7-.4Z"></path>
+            </svg>
+          ))}
+        </div>
+        <blockquote style="margin: 0; font-family: Fraunces, Georgia, serif; font-style: italic; font-weight: 300; font-size: clamp(26px, 3vw, 38px); line-height: 1.3; color: #4F3B2C">“{review.text}”</blockquote>
+        <figcaption style="font-size: 14px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #7A5C46">{t('verifiedPatient')} · {review.date}</figcaption>
+      </figure>
+    ))}
+    <div style="display: flex; flex-wrap: nowrap; justify-content: center; align-items: center; gap: 8px">
+      <button type="button" data-review-prev aria-label={t('previousComment')} style="width: 44px; height: 44px; flex: 0 0 44px; border-radius: 999px; border: 1.5px solid #9DB394; background: transparent; color: #33503F; cursor: pointer">
+        <svg aria-hidden="true" viewBox="0 0 16 16" width="16" height="16" style="display: block; margin: 0 auto; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round">
+          <path d="M10 3 5 8l5 5"></path>
+        </svg>
+      </button>
+      <div style="display: flex; flex-wrap: nowrap; justify-content: center; gap: 0">
+        {reviews.map((review, index) => (
+          <button type="button" data-review-dot aria-label={`${t('commentFrom')} ${review.date}`} aria-current={index === 0 ? 'true' : 'false'} style="width: 18px; height: 44px; padding: 0; border: 0; background: transparent; cursor: pointer">
+            <span style="display: block; width: 8px; height: 8px; margin: 0 auto; border-radius: 999px; border: 1.5px solid #7A5C46"></span>
+          </button>
+        ))}
+      </div>
+      <button type="button" data-review-next aria-label={t('nextComment')} style="width: 44px; height: 44px; flex: 0 0 44px; border-radius: 999px; border: 1.5px solid #9DB394; background: transparent; color: #33503F; cursor: pointer">
+        <svg aria-hidden="true" viewBox="0 0 16 16" width="16" height="16" style="display: block; margin: 0 auto; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round">
+          <path d="M6 3l5 5-5 5"></path>
+        </svg>
+      </button>
+    </div>
+    <p style="margin: 0; max-width: 520px; font-size: 14px; line-height: 1.55; color: #625C53">
+      {t('reviewsNote')}
+      <a href={luminoProfileUrl} style="color: #33503F">{t('reviewsLink')}</a>.
+      {t('reviewsDisclaimer')}
+    </p>
+  </div>
+</section>
+
+<style>
+  [data-review][hidden] {
+    display: none !important;
+  }
+  [data-review-dot][aria-current='true'] span {
+    background: #7A5C46;
+  }
+</style>
+
+<script>
+  const root = document.querySelector('[data-reviews]');
+  if (root) {
+    const slides = [...root.querySelectorAll<HTMLElement>('[data-review]')];
+    const dots = [...root.querySelectorAll<HTMLButtonElement>('[data-review-dot]')];
+    let index = 0;
+
+    const show = (next: number) => {
+      index = (next + slides.length) % slides.length;
+      slides.forEach((slide, i) => {
+        slide.hidden = i !== index;
+      });
+      dots.forEach((dot, i) => {
+        dot.setAttribute('aria-current', i === index ? 'true' : 'false');
+      });
+    };
+
+    root.querySelector('[data-review-prev]')?.addEventListener('click', () => show(index - 1));
+    root.querySelector('[data-review-next]')?.addEventListener('click', () => show(index + 1));
+    dots.forEach((dot, i) => dot.addEventListener('click', () => show(i)));
+  }
+</script>

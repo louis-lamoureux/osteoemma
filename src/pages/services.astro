@@ -2,20 +2,28 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Wave from '../components/Wave.astro';
 import { site } from '../data/site';
+import { useTranslations, type Locale } from '../i18n/utils';
+
+interface Props {
+  lang?: Locale;
+}
+
+const { lang = 'fr' } = Astro.props;
+const t = useTranslations(lang);
 ---
-<BaseLayout title="Services — Lorem Ipsum, Osteopath" current="services">
+<BaseLayout title={t('titleServices')} current="services" lang={lang}>
 <main>
 <section style="background: #E1EAD9; position: relative; overflow: hidden">
 <svg viewBox="0 0 400 400" aria-hidden="true" style="position: absolute; right: -60px; top: -40px; width: 420px; height: 420px" fill="none" stroke="#C9D8BE" stroke-width="1.5"><ellipse cx="200" cy="200" rx="40" ry="36"></ellipse><ellipse cx="196" cy="204" rx="80" ry="72"></ellipse><ellipse cx="192" cy="208" rx="122" ry="110"></ellipse><ellipse cx="188" cy="212" rx="164" ry="150"></ellipse><ellipse cx="184" cy="216" rx="206" ry="190"></ellipse></svg>
 <div style="position: relative; max-width: 1200px; margin: 0 auto; padding: 56px 24px 40px; display: flex; flex-direction: column; gap: 18px; max-width: 1200px">
-<span style="display: inline-flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #7A5C46"><span style="width: 28px; height: 2px; background: #7A5C46; border-radius: 2px"></span>Services</span>
+<span style="display: inline-flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #7A5C46"><span style="width: 28px; height: 2px; background: #7A5C46; border-radius: 2px"></span>{t('navServices')}</span>
 <h1 style="margin: 0; max-width: 760px; font-family: Fraunces, Georgia, serif; font-weight: 400; font-size: clamp(40px, 5vw, 66px); line-height: 1.05; letter-spacing: -0.015em; color: #33503F">Lorem ipsum dolor sit <em style="font-style: italic; color: #7A5C46">amet</em></h1>
 <p style="margin: 0; max-width: 600px; font-size: 19px; color: #4A463E">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
 </div>
 </section>
 <Wave from="#E1EAD9" to="#F6F3EC" shape="fall" />
 
-<section aria-label="List of services" style="max-width: 1100px; margin: 0 auto; padding: 32px 24px 80px; display: flex; flex-direction: column">
+<section aria-label={t('serviceList')} style="max-width: 1100px; margin: 0 auto; padding: 32px 24px 80px; display: flex; flex-direction: column">
 
 <article style="display: flex; flex-wrap: wrap; align-items: center; gap: 48px; padding: 24px 0">
 <div style="flex: 0 0 220px; height: 200px; border-radius: 58% 42% 47% 53% / 46% 52% 48% 54%; background: #E1EAD9; display: flex; align-items: center; justify-content: center"><svg width="72" height="72" viewBox="0 0 28 28" fill="none" stroke="#33503F" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="14" cy="6" r="2.5"></circle><path d="M14 9v8M9 12h10M14 17l-4 7M14 17l4 7"></path></svg></div>
@@ -26,7 +34,7 @@ import { site } from '../data/site';
 <div style="display: flex; flex-wrap: wrap; gap: 8px; padding-top: 4px">
 <span style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 999px; background: #EFE4D6; font-size: 14px; color: #4F3B2C"><svg width="16" height="16" viewBox="0 0 28 28" fill="none" stroke="#4F3B2C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="14" cy="14" r="10"></circle><path d="M14 8v6l4 3"></path></svg>[60] min</span>
 <span style="padding: 6px 14px; border-radius: 999px; background: #EFE4D6; font-size: 14px; color: #4F3B2C">[$000]</span>
-<span style="padding: 6px 14px; border-radius: 999px; background: #EFE4D6; font-size: 14px; color: #4F3B2C">Insurance receipt</span>
+<span style="padding: 6px 14px; border-radius: 999px; background: #EFE4D6; font-size: 14px; color: #4F3B2C">{t('insuranceReceipt')}</span>
 </div>
 </div>
 </article>
@@ -40,7 +48,7 @@ import { site } from '../data/site';
 <div style="display: flex; flex-wrap: wrap; gap: 8px; padding-top: 4px">
 <span style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 999px; background: #EFE4D6; font-size: 14px; color: #4F3B2C"><svg width="16" height="16" viewBox="0 0 28 28" fill="none" stroke="#4F3B2C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="14" cy="14" r="10"></circle><path d="M14 8v6l4 3"></path></svg>[45] min</span>
 <span style="padding: 6px 14px; border-radius: 999px; background: #EFE4D6; font-size: 14px; color: #4F3B2C">[$000]</span>
-<span style="padding: 6px 14px; border-radius: 999px; background: #EFE4D6; font-size: 14px; color: #4F3B2C">Insurance receipt</span>
+<span style="padding: 6px 14px; border-radius: 999px; background: #EFE4D6; font-size: 14px; color: #4F3B2C">{t('insuranceReceipt')}</span>
 </div>
 </div>
 <div style="flex: 0 0 220px; height: 200px; border-radius: 46% 54% 40% 60% / 55% 42% 58% 45%; background: #EFE4D6; display: flex; align-items: center; justify-content: center"><svg width="72" height="72" viewBox="0 0 28 28" fill="none" stroke="#7A5C46" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 24V13M14 13c0-4-3-7-8-7 0 4 3 7 8 7ZM14 16c0-4 3-7 8-7 0 4-3 7-8 7Z"></path></svg></div>
@@ -56,7 +64,7 @@ import { site } from '../data/site';
 <div style="display: flex; flex-wrap: wrap; gap: 8px; padding-top: 4px">
 <span style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 999px; background: #EFE4D6; font-size: 14px; color: #4F3B2C"><svg width="16" height="16" viewBox="0 0 28 28" fill="none" stroke="#4F3B2C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="14" cy="14" r="10"></circle><path d="M14 8v6l4 3"></path></svg>[60] min</span>
 <span style="padding: 6px 14px; border-radius: 999px; background: #EFE4D6; font-size: 14px; color: #4F3B2C">[$000]</span>
-<span style="padding: 6px 14px; border-radius: 999px; background: #EFE4D6; font-size: 14px; color: #4F3B2C">Insurance receipt</span>
+<span style="padding: 6px 14px; border-radius: 999px; background: #EFE4D6; font-size: 14px; color: #4F3B2C">{t('insuranceReceipt')}</span>
 </div>
 </div>
 </article>
@@ -70,7 +78,7 @@ import { site } from '../data/site';
 <div style="display: flex; flex-wrap: wrap; gap: 8px; padding-top: 4px">
 <span style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 999px; background: #EFE4D6; font-size: 14px; color: #4F3B2C"><svg width="16" height="16" viewBox="0 0 28 28" fill="none" stroke="#4F3B2C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="14" cy="14" r="10"></circle><path d="M14 8v6l4 3"></path></svg>[60] min</span>
 <span style="padding: 6px 14px; border-radius: 999px; background: #EFE4D6; font-size: 14px; color: #4F3B2C">[$000]</span>
-<span style="padding: 6px 14px; border-radius: 999px; background: #EFE4D6; font-size: 14px; color: #4F3B2C">Insurance receipt</span>
+<span style="padding: 6px 14px; border-radius: 999px; background: #EFE4D6; font-size: 14px; color: #4F3B2C">{t('insuranceReceipt')}</span>
 </div>
 </div>
 <div style="flex: 0 0 220px; height: 200px; border-radius: 60% 40% 52% 48% / 48% 58% 42% 52%; background: #E1EAD9; display: flex; align-items: center; justify-content: center"><svg width="72" height="72" viewBox="0 0 28 28" fill="none" stroke="#33503F" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 22 11 9l5 7 3-4 6 10Z"></path></svg></div>
@@ -105,7 +113,7 @@ import { site } from '../data/site';
 <div style="max-width: 760px; margin: 0 auto; padding: 40px 24px 72px; display: flex; flex-direction: column; align-items: center; gap: 20px; text-align: center">
 <h2 style="margin: 0; font-family: Fraunces, Georgia, serif; font-weight: 400; font-size: clamp(32px, 3.6vw, 50px); line-height: 1.1; color: #F6F3EC">Lorem ipsum dolor <em style="font-style: italic; color: #D9C3AA">sit amet?</em></h2>
 <p style="margin: 0; color: #CFDCC6; font-size: 18px">Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.</p>
-<a href={site.goRendezVousUrl} data-book-now style="margin-top: 8px; display: inline-flex; align-items: center; gap: 10px; padding: 16px 28px; border-radius: 999px; background: #E1EAD9; color: #2F4A3A; text-decoration: none; font-weight: 600">See availabilities <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2F4A3A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+<a href={site.goRendezVousUrl} data-book-now style="margin-top: 8px; display: inline-flex; align-items: center; gap: 10px; padding: 16px 28px; border-radius: 999px; background: #E1EAD9; color: #2F4A3A; text-decoration: none; font-weight: 600">{t('seeAvailabilities')} <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2F4A3A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
 </div>
 </section>
 </main>

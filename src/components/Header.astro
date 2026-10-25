@@ -1,8 +1,11 @@
 ---
 import { site, nav, type PageKey } from '../data/site';
+import { localePath, swapLocale, useTranslations, type Locale } from '../i18n/utils';
+import type { TranslationKey } from '../i18n/ui';
 
 interface Props {
   current: PageKey;
+  lang: Locale;
   /** Header background — matches the hero below it. */
   bg: string;
   /** Fill of the tree canopy in the logo. */
@@ -11,23 +14,30 @@ interface Props {
   activeBg: string;
 }
 
-const { current, bg, logoFill, activeBg } = Astro.props;
+const { current, lang, bg, logoFill, activeBg } = Astro.props;
+const t = useTranslations(lang);
+const navLabel: Record<Exclude<PageKey, 'booking'>, TranslationKey> = {
+  home: 'navHome',
+  services: 'navServices',
+  about: 'navAbout',
+  osteopathy: 'navOsteopathy',
+};
+const pathname = Astro.url.pathname;
 ---
 <header style={`background: ${bg}`}>
-<nav aria-label="Main" style="max-width: 1200px; margin: 0 auto; padding: 20px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
-<a href="/" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: #33503F">
+<nav aria-label={t('navLabel')} style="max-width: 1200px; margin: 0 auto; padding: 20px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<a href={localePath('/', lang)} style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: #33503F">
 <svg width="44" height="44" viewBox="0 0 40 40" fill="none" stroke="#33503F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 23c-6 0-10-4-10-9a10 10 0 0 1 20 0c0 5-4 9-10 9Z" fill={logoFill}></path><path d="M20 31V16M20 23l-4-4M20 21l4-3"></path><path d="M20 31c-2 1-4 1-6 0M20 31c2 1 4 1 6 0"></path><path d="M5 36c3-2 5-2 8 0s5 2 8 0 5-2 8 0 4 2 6 0" stroke="#7FA39C"></path></svg>
 <span style="display: flex; flex-direction: column; line-height: 1.15"><span style="font-family: Fraunces, Georgia, serif; font-size: 22px; font-weight: 500">{site.name}</span><span style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #7A5C46">{site.tagline}</span></span>
 </a>
 <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 4px">
 {nav.map((item) =>
   item.key === current
-    ? <a href={item.href} aria-current="page" style={`padding: 10px 16px; border-radius: 999px; text-decoration: none; color: #33503F; background: ${activeBg}; font-weight: 600; font-size: 15px`}>{item.label}</a>
-    : <a href={item.href} style="padding: 10px 16px; border-radius: 999px; text-decoration: none; color: #3A3631; font-size: 15px">{item.label}</a>
+    ? <a href={localePath(item.href, lang)} aria-current="page" style={`padding: 10px 16px; border-radius: 999px; text-decoration: none; color: #33503F; background: ${activeBg}; font-weight: 600; font-size: 15px`}>{t(navLabel[item.key])}</a>
+    : <a href={localePath(item.href, lang)} style="padding: 10px 16px; border-radius: 999px; text-decoration: none; color: #3A3631; font-size: 15px">{t(navLabel[item.key])}</a>
 )}
-<a href={site.goRendezVousUrl} data-book-now style="margin-left: 8px; padding: 12px 22px; border-radius: 999px; text-decoration: none; color: #FFFFFF; background: #33503F; font-weight: 600; font-size: 15px">Book now</a>
-<!-- Language switch: placeholder until French/English routes exist (see CURSOR_PROMPT.md). -->
-<span style="margin-left: 8px; display: flex; align-items: center; gap: 2px; font-size: 13px; font-weight: 600; color: #625C53"><a href="#" style="padding: 10px 6px; text-decoration: none; color: #625C53">FR</a><span aria-hidden="true">/</span><a href="#" style="padding: 10px 6px; text-decoration: none; color: #33503F">EN</a></span>
+<a href={site.goRendezVousUrl} data-book-now style="margin-left: 8px; padding: 12px 22px; border-radius: 999px; text-decoration: none; color: #FFFFFF; background: #33503F; font-weight: 600; font-size: 15px">{t('bookNow')}</a>
+<span style="margin-left: 8px; display: flex; align-items: center; gap: 2px; font-size: 13px; font-weight: 600; color: #625C53"><a href={swapLocale(pathname, 'fr')} hreflang="fr" lang="fr" aria-current={lang === 'fr' ? 'true' : undefined} style={`padding: 10px 6px; text-decoration: none; color: ${lang === 'fr' ? '#33503F' : '#625C53'}`}>FR</a><span aria-hidden="true">/</span><a href={swapLocale(pathname, 'en')} hreflang="en" lang="en" aria-current={lang === 'en' ? 'true' : undefined} style={`padding: 10px 6px; text-decoration: none; color: ${lang === 'en' ? '#33503F' : '#625C53'}`}>EN</a></span>
 </div>
 </nav>
 </header>

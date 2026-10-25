@@ -1,39 +1,48 @@
 ---
 import { site } from '../data/site';
+import { localePath, useTranslations, type Locale } from '../i18n/utils';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const hours = [t('hoursLine1'), t('hoursLine2'), t('hoursLine3')];
 ---
 <footer style="background: #EFE4D6; color: #4F3B2C; font-size: 15px">
 <div style="max-width: 1200px; margin: 0 auto; padding: 24px 24px 36px; display: flex; flex-direction: column; gap: 40px">
 <div style="display: flex; flex-wrap: wrap; gap: 40px; justify-content: space-between">
 <div style="flex: 1 1 260px; display: flex; flex-direction: column; gap: 14px; max-width: 320px">
 <span style="font-family: Fraunces, Georgia, serif; font-size: 24px; color: #33503F">{site.name}</span>
-<p style="margin: 0">{site.footerBlurb}</p>
+<p style="margin: 0">{t('footerBlurb')}</p>
 </div>
-<nav aria-label="Footer" style="flex: 0 1 150px; display: flex; flex-direction: column; gap: 6px">
-<span style="font-family: Fraunces, Georgia, serif; font-size: 18px; color: #33503F; margin-bottom: 4px">Explore</span>
-<a href="/services" style="color: #4F3B2C; text-decoration: none">Services</a>
-<a href="/about" style="color: #4F3B2C; text-decoration: none">About</a>
-<a href="/osteopathy" style="color: #4F3B2C; text-decoration: none">Osteopathy</a>
-<a href={site.goRendezVousUrl} data-book-now style="color: #4F3B2C; text-decoration: none">Book</a>
+<nav aria-label={t('footerLabel')} style="flex: 0 1 150px; display: flex; flex-direction: column; gap: 6px">
+<span style="font-family: Fraunces, Georgia, serif; font-size: 18px; color: #33503F; margin-bottom: 4px">{t('explore')}</span>
+<a href={localePath('/services', lang)} style="color: #4F3B2C; text-decoration: none">{t('navServices')}</a>
+<a href={localePath('/about', lang)} style="color: #4F3B2C; text-decoration: none">{t('navAbout')}</a>
+<a href={localePath('/osteopathy', lang)} style="color: #4F3B2C; text-decoration: none">{t('navOsteopathy')}</a>
+<a href={site.goRendezVousUrl} data-book-now style="color: #4F3B2C; text-decoration: none">{t('book')}</a>
 </nav>
 <div style="flex: 0 1 220px; display: flex; flex-direction: column; gap: 6px">
-<span style="font-family: Fraunces, Georgia, serif; font-size: 18px; color: #33503F; margin-bottom: 4px">Visit</span>
+<span style="font-family: Fraunces, Georgia, serif; font-size: 18px; color: #33503F; margin-bottom: 4px">{t('visit')}</span>
 <span>{site.address.street}</span>
 <span>{site.address.city}</span>
 <span>{site.address.transit}</span>
 </div>
 <div style="flex: 0 1 200px; display: flex; flex-direction: column; gap: 6px">
-<span style="font-family: Fraunces, Georgia, serif; font-size: 18px; color: #33503F; margin-bottom: 4px">Contact</span>
+<span style="font-family: Fraunces, Georgia, serif; font-size: 18px; color: #33503F; margin-bottom: 4px">{t('contact')}</span>
 <a href={site.phone.href} style="color: #4F3B2C; text-decoration: none">{site.phone.label}</a>
 <a href={site.email.href} style="color: #4F3B2C; text-decoration: none">{site.email.label}</a>
 </div>
 <div style="flex: 0 1 200px; display: flex; flex-direction: column; gap: 6px">
-<span style="font-family: Fraunces, Georgia, serif; font-size: 18px; color: #33503F; margin-bottom: 4px">Hours</span>
-{site.hours.map((line) => <span>{line}</span>)}
+<span style="font-family: Fraunces, Georgia, serif; font-size: 18px; color: #33503F; margin-bottom: 4px">{t('hours')}</span>
+{hours.map((line) => <span>{line}</span>)}
 </div>
 </div>
 <div style="border-top: 1px solid #D9C3AA; padding-top: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 14px">
-<span>{site.legalLine}</span>
-<a href={site.privacyUrl} style="color: #4F3B2C">Privacy policy (Law 25)</a>
+<span>{t('legalLine')}</span>
+<a href={site.privacyUrl} style="color: #4F3B2C">{t('privacy')}</a>
 </div>
 </div>
 </footer>

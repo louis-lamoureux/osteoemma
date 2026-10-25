@@ -1,12 +1,25 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
 
 // https://docs.astro.build/en/reference/configuration-reference/
 export default defineConfig({
-  // TODO: replace with the real domain once it's chosen (used for canonical URLs / sitemap).
-  site: 'https://example.com',
+  site: 'https://osteoemma.ca',
+  integrations: [
+    sitemap({
+      i18n: {
+        defaultLocale: 'fr',
+        locales: {
+          fr: 'fr-CA',
+          en: 'en-CA',
+        },
+      },
+    }),
+  ],
   // Pure static output: every page is pre-rendered to plain HTML.
+  // Canonicals, hreflang, and internal links have no trailing slash. Keep the sitemap the same.
   output: 'static',
+  trailingSlash: 'never',
   i18n: {
     defaultLocale: 'fr',
     locales: ['fr', 'en'],

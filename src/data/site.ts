@@ -8,13 +8,23 @@ export const site = {
   tagline: 'Ostéopathe D.O.',
 
   address: {
-    street: '[0000, rue Lorem]',
-    city: 'Montréal (QC) H0H 0H0',
-    transit: '[Métro station]',
+    street: '4255, rue Wellington, bureau 202',
+    city: 'Montréal (Verdun) QC H4G 1V9',
+    transit: 'Clinique Hakini',
+    locality: 'Montréal',
+    region: 'QC',
+    postalCode: 'H4G 1V9',
+    country: 'CA',
   },
 
-  phone: { label: '[514 000-0000]', href: '#' }, // e.g. 'tel:+15140000000'
+  /** Reception number published by Hakini for this address. */
+  phone: { label: '514 886-2946', href: 'tel:+15148862946' },
   email: { label: '[hello@lorem.ca]', href: '#' }, // e.g. 'mailto:hello@example.ca'
+
+  clinic: {
+    name: 'Hakini — Clinique d’ostéopathie & santé globale',
+    url: 'https://www.hakini.ca/fr/',
+  },
 
   privacyUrl: '#', // Quebec Law 25 privacy policy page
 

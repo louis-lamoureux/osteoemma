@@ -11,7 +11,7 @@ interface Props {
 const { lang = 'fr' } = Astro.props;
 const t = useTranslations(lang);
 ---
-<BaseLayout title={t('titleServices')} current="services" lang={lang}>
+<BaseLayout title={t('titleServices')} description={t('descriptionServices')} current="services" lang={lang}>
 <main>
 <section style="background: #E1EAD9; position: relative; overflow: hidden">
 <svg viewBox="0 0 400 400" aria-hidden="true" style="position: absolute; right: -60px; top: -40px; width: 420px; height: 420px" fill="none" stroke="#C9D8BE" stroke-width="1.5"><ellipse cx="200" cy="200" rx="40" ry="36"></ellipse><ellipse cx="196" cy="204" rx="80" ry="72"></ellipse><ellipse cx="192" cy="208" rx="122" ry="110"></ellipse><ellipse cx="188" cy="212" rx="164" ry="150"></ellipse><ellipse cx="184" cy="216" rx="206" ry="190"></ellipse></svg>

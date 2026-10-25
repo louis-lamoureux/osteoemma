@@ -1,0 +1,92 @@
+---
+import { site } from '../data/site';
+import { luminoProfileUrl } from '../data/reviews';
+import type { Locale } from '../i18n/utils';
+
+interface Props {
+  title: string;
+  description: string;
+  practiceDescription: string;
+  lang: Locale;
+  canonical: string;
+  origin: string;
+}
+
+const { title, description, practiceDescription, lang, canonical, origin } = Astro.props;
+const practiceId = `${origin}/#practice`;
+const personId = `${origin}/#emmanuele`;
+const clinicId = `${origin}/#hakini`;
+const websiteId = `${origin}/#website`;
+
+const address = {
+  '@type': 'PostalAddress',
+  streetAddress: site.address.street,
+  addressLocality: site.address.locality,
+  addressRegion: site.address.region,
+  postalCode: site.address.postalCode,
+  addressCountry: site.address.country,
+};
+
+const graph = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      '@id': websiteId,
+      name: `${site.name}, ${lang === 'fr' ? 'ostéopathe' : 'osteopath'}`,
+      url: `${origin}/`,
+      inLanguage: ['fr-CA', 'en-CA'],
+      publisher: { '@id': personId },
+    },
+    {
+      '@type': 'WebPage',
+      '@id': `${canonical}#webpage`,
+      url: canonical,
+      name: title,
+      description,
+      inLanguage: lang === 'fr' ? 'fr-CA' : 'en-CA',
+      isPartOf: { '@id': websiteId },
+      about: { '@id': personId },
+    },
+    {
+      '@type': 'Person',
+      '@id': personId,
+      name: site.name,
+      jobTitle: site.tagline,
+      url: `${origin}/`,
+      knowsLanguage: ['fr', 'en'],
+      workLocation: { '@id': practiceId },
+      worksFor: { '@id': clinicId },
+      sameAs: [luminoProfileUrl],
+    },
+    {
+      '@type': 'LocalBusiness',
+      '@id': practiceId,
+      name: site.name,
+      description: practiceDescription,
+      url: `${origin}/`,
+      telephone: '+15148862946',
+      address,
+      areaServed: [
+        { '@type': 'AdministrativeArea', name: 'Verdun' },
+        { '@type': 'City', name: 'Montréal' },
+      ],
+      currenciesAccepted: 'CAD',
+      potentialAction: {
+        '@type': 'ReserveAction',
+        name: lang === 'fr' ? 'Prendre rendez-vous' : 'Book an appointment',
+        target: site.goRendezVousUrl,
+      },
+    },
+    {
+      '@type': 'Organization',
+      '@id': clinicId,
+      name: site.clinic.name,
+      url: site.clinic.url,
+    },
+  ],
+};
+
+const json = JSON.stringify(graph).replace(/</g, '\\u003c');
+---
+<script type="application/ld+json" set:html={json}></script>

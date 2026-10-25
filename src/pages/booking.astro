@@ -10,7 +10,7 @@ interface Props {
 const { lang = 'fr' } = Astro.props;
 const t = useTranslations(lang);
 ---
-<BaseLayout title={t('titleBooking')} current="booking" lang={lang}>
+<BaseLayout title={t('titleBooking')} description={t('descriptionBooking')} current="booking" lang={lang}>
 <main>
 <section style="background: #E1EAD9">
 <div style="max-width: 1200px; margin: 0 auto; padding: 40px 24px 24px; display: flex; flex-direction: column; gap: 16px">

@@ -3,7 +3,8 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Wave from '../components/Wave.astro';
 import GoRendezVousWidget from '../components/GoRendezVousWidget.astro';
-import type { PageKey } from '../data/site';
+import JsonLd from '../components/JsonLd.astro';
+import { site, type PageKey } from '../data/site';
 import { swapLocale, useTranslations, type Locale } from '../i18n/utils';
 import '../styles/tokens.css';
 
@@ -44,17 +45,36 @@ const t = themes[current];
 const translate = useTranslations(lang);
 const metaDescription = description ?? translate('description');
 const pathname = Astro.url.pathname;
+const origin = (Astro.site ?? Astro.url).toString().replace(/\/$/, '');
+const canonical = new URL(pathname, `${origin}/`).href;
+const hrefFr = new URL(swapLocale(pathname, 'fr'), `${origin}/`).href;
+const hrefEn = new URL(swapLocale(pathname, 'en'), `${origin}/`).href;
+const htmlLang = lang === 'fr' ? 'fr-CA' : 'en-CA';
+const ogLocale = lang === 'fr' ? 'fr_CA' : 'en_CA';
+const ogLocaleAlt = lang === 'fr' ? 'en_CA' : 'fr_CA';
 ---
 <!doctype html>
-<html lang={lang}>
+<html lang={htmlLang}>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title}</title>
 <meta name="description" content={metaDescription}>
-<link rel="alternate" hreflang="fr" href={swapLocale(pathname, 'fr')}>
-<link rel="alternate" hreflang="en" href={swapLocale(pathname, 'en')}>
-<link rel="alternate" hreflang="x-default" href={swapLocale(pathname, 'fr')}>
+<link rel="canonical" href={canonical}>
+<link rel="alternate" hreflang="fr-CA" href={hrefFr}>
+<link rel="alternate" hreflang="en-CA" href={hrefEn}>
+<link rel="alternate" hreflang="x-default" href={hrefFr}>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content={site.name}>
+<meta property="og:title" content={title}>
+<meta property="og:description" content={metaDescription}>
+<meta property="og:url" content={canonical}>
+<meta property="og:locale" content={ogLocale}>
+<meta property="og:locale:alternate" content={ogLocaleAlt}>
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content={title}>
+<meta name="twitter:description" content={metaDescription}>
+<JsonLd title={title} description={metaDescription} practiceDescription={translate('descriptionHome')} lang={lang} canonical={canonical} origin={origin} />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

@@ -13,13 +13,13 @@ interface Props {
 const { lang = 'fr' } = Astro.props;
 const t = useTranslations(lang);
 ---
-<BaseLayout title={t('titleOsteopathy')} current="osteopathy" lang={lang}>
+<BaseLayout title={t('titleOsteopathy')} description={t('descriptionOsteopathy')} current="osteopathy" lang={lang}>
 <main>
 <section style="max-width: 1200px; margin: 0 auto; padding: 32px 24px 64px; display: flex; flex-wrap: wrap; align-items: center; gap: 48px">
 <div style="flex: 1 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 20px">
 <span style="display: inline-flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #7A5C46"><span style="width: 28px; height: 2px; background: #7A5C46; border-radius: 2px"></span>{t('foundations')}</span>
-<h1 style="margin: 0; font-family: Fraunces, Georgia, serif; font-weight: 400; font-size: clamp(40px, 5vw, 66px); line-height: 1.05; letter-spacing: -0.015em; color: #33503F">Lorem ipsum, <em style="font-style: italic; color: #7A5C46">where roots</em> meet the river</h1>
-<p style="margin: 0; font-size: 19px; color: #4A463E; max-width: 540px">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis.</p>
+<h1 style="margin: 0; font-family: Fraunces, Georgia, serif; font-weight: 400; font-size: clamp(40px, 5vw, 66px); line-height: 1.05; letter-spacing: -0.015em; color: #33503F">{t('osteopathyHeadline')} <em style="font-style: italic; color: #7A5C46">{t('osteopathyHeadlineEmphasis')}</em></h1>
+<p style="margin: 0; font-size: 19px; color: #4A463E; max-width: 540px">{t('osteopathyLead')}</p>
 </div>
 <div style="flex: 1 1 380px; min-width: 0; display: flex; justify-content: center">
 <svg viewBox="0 0 480 440" aria-hidden="true" style="width: 100%; max-width: 480px; height: auto">

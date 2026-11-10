@@ -72,11 +72,17 @@ const graph = {
       workLocation: { '@id': practiceId },
       worksFor: { '@id': clinicId },
       alumniOf: [school(schools.brussels), school(schools.quebec), school(schools.nutrition)],
-      hasCredential: [
-        credential('Physiothérapie (Université de Bruxelles)', schools.brussels),
-        credential('Ostéopathie (Institut d’Enseignement de l’Ostéopathie du Québec)', schools.quebec),
-        credential('Nutrithérapeute et Conseiller en Nutrition humaine', schools.nutrition),
-      ],
+      hasCredential: lang === 'fr'
+        ? [
+            credential('Physiothérapie (Université de Bruxelles)', schools.brussels),
+            credential('Ostéopathie (Institut d’Enseignement de l’Ostéopathie du Québec)', schools.quebec),
+            credential('Nutrithérapeute et Conseiller en Nutrition humaine', schools.nutrition),
+          ]
+        : [
+            credential('Physiotherapy (Université de Bruxelles)', schools.brussels),
+            credential('Osteopathy (Institut d’Enseignement de l’Ostéopathie du Québec)', schools.quebec),
+            credential('Nutritherapist and advisor in human nutrition', schools.nutrition),
+          ],
       sameAs: [luminoProfileUrl],
     },
     {

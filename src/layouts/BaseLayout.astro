@@ -62,6 +62,7 @@ const ogLocaleAlt = lang === 'fr' ? 'en_CA' : 'fr_CA';
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title}</title>
 <meta name="description" content={metaDescription}>
+{current === 'notFound' && <meta name="robots" content="noindex">}
 <link rel="canonical" href={canonical}>
 <link rel="alternate" hreflang="fr-CA" href={hrefFr}>
 <link rel="alternate" hreflang="en-CA" href={hrefEn}>

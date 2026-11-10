@@ -21,12 +21,11 @@ const label = lang === 'en' ? 'Book now' : 'Prendre rendez-vous';
 !function (d, s) { var js, sid = "gorendezvous-bookingwidget-script"; var sEl = d.getElementById(sid); if (sEl) { sEl.parentNode.removeChild(sEl); } js = d.createElement(s); js.id = sid; js.src = "https://www.gorendezvous.com/Scripts/gorendezvous.bookingWidgetV2.min.js?v=" + (Math.floor(new Date().getTime() / (1000 * 60 * 30)) * (1000 * 60 * 30)).toString(); d.body.appendChild(js); }(document, "script");
 </script>
 </div>
-<script is:inline>
+<script is:inline define:vars={{ bookingUrl: site.goRendezVousUrl }}>
 document.addEventListener('click', function (event) {
   var trigger = event.target && event.target.closest ? event.target.closest('[data-book-now]') : null;
   if (!trigger) return;
   event.preventDefault();
-  var fallback = trigger.href;
   var started = Date.now();
   (function attempt() {
     var frame = document.getElementById('GOrendezvousFrame');
@@ -37,7 +36,7 @@ document.addEventListener('click', function (event) {
       btn = null;
     }
     if (btn) { btn.click(); return; }
-    if (Date.now() - started > 2500) { window.location.href = fallback; return; }
+    if (Date.now() - started > 2500) { window.location.href = bookingUrl; return; }
     window.setTimeout(attempt, 100);
   })();
 });

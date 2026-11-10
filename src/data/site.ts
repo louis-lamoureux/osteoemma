@@ -28,8 +28,8 @@ export const site = {
 
   privacyUrl: '#', // Quebec Law 25 privacy policy page
 
-  /** Her public Go Rendez-Vous booking page. Fallback if the embed script does not run. */
-  goRendezVousUrl: 'https://www.gorendezvous.com/hakini?companyId=101639',
+  /** Her public Go Rendez-Vous page, scoped to her professional id. Fallback if the embed script does not run. */
+  goRendezVousUrl: 'https://www.gorendezvous.com/hakini?companyId=101639&includedProfessionalIds=5419766',
 };
 
 /**

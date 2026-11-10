@@ -16,7 +16,7 @@ interface Props {
 
 const { current, lang, bg, logoFill, activeBg } = Astro.props;
 const t = useTranslations(lang);
-const navLabel: Record<Exclude<PageKey, 'booking'>, TranslationKey> = {
+const navLabel: Record<Exclude<PageKey, 'booking' | 'notFound'>, TranslationKey> = {
   home: 'navHome',
   services: 'navServices',
   about: 'navAbout',

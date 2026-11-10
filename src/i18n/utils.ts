@@ -8,8 +8,8 @@ export type Locale = (typeof locales)[number];
 export function localePath(path: string, locale: Locale): string {
   const normalized = path.startsWith('/') ? path : `/${path}`;
   const bare = normalized === '/' ? '/' : normalized.replace(/\/$/, '');
-  if (locale === defaultLocale) return bare;
-  return bare === '/' ? '/en' : `/en${bare}`;
+  if (locale === defaultLocale) return bare === '/' ? '/' : `${bare}/`;
+  return bare === '/' ? '/en/' : `/en${bare}/`;
 }
 
 export function stripLocale(pathname: string): string {

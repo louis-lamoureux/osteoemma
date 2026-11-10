@@ -1,5 +1,5 @@
 ---
-import { site } from '../data/site';
+import { geo, mapUrl, site } from '../data/site';
 import { luminoProfileUrl } from '../data/reviews';
 import type { Locale } from '../i18n/utils';
 
@@ -17,6 +17,19 @@ const practiceId = `${origin}/#practice`;
 const personId = `${origin}/#emmanuele`;
 const clinicId = `${origin}/#hakini`;
 const websiteId = `${origin}/#website`;
+const image = `${origin}/og.jpg`;
+const schools = {
+  brussels: 'Université de Bruxelles',
+  quebec: 'Institut d’Enseignement de l’Ostéopathie du Québec',
+  nutrition:
+    'Centre Européen pour la Recherche, le Développement et l’Enseignement de la Nutrition et de la Nutrithérapie',
+};
+const school = (name: string) => ({ '@type': 'EducationalOrganization', name });
+const credential = (name: string, schoolName: string) => ({
+  '@type': 'EducationalOccupationalCredential',
+  name,
+  recognizedBy: school(schoolName),
+});
 
 const address = {
   '@type': 'PostalAddress',
@@ -54,9 +67,16 @@ const graph = {
       name: site.name,
       jobTitle: site.tagline,
       url: `${origin}/`,
+      image,
       knowsLanguage: ['fr', 'en'],
       workLocation: { '@id': practiceId },
       worksFor: { '@id': clinicId },
+      alumniOf: [school(schools.brussels), school(schools.quebec), school(schools.nutrition)],
+      hasCredential: [
+        credential('Physiothérapie (Université de Bruxelles)', schools.brussels),
+        credential('Ostéopathie (Institut d’Enseignement de l’Ostéopathie du Québec)', schools.quebec),
+        credential('Nutrithérapeute et Conseiller en Nutrition humaine', schools.nutrition),
+      ],
       sameAs: [luminoProfileUrl],
     },
     {
@@ -65,8 +85,15 @@ const graph = {
       name: site.name,
       description: practiceDescription,
       url: `${origin}/`,
+      image,
       telephone: '+15148862946',
       address,
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: geo.latitude,
+        longitude: geo.longitude,
+      },
+      hasMap: mapUrl,
       areaServed: [
         { '@type': 'AdministrativeArea', name: 'Verdun' },
         { '@type': 'City', name: 'Montréal' },

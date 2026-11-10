@@ -36,13 +36,13 @@ Emmanuële Achaintre is an osteopath (D.O.) who sees patients in Verdun, a borou
 ## Pages
 
 - [Accueil](${base}/): ${fr.descriptionHome}
-- [Home](${base}/en): ${en.descriptionHome}
-- [Ostéopathie](${base}/osteopathy): ${fr.descriptionOsteopathy}
-- [Osteopathy](${base}/en/osteopathy): ${en.descriptionOsteopathy}
-- [Expérience](${base}/about): ${fr.descriptionAbout}
-- [Experience](${base}/en/about): ${en.descriptionAbout}
-- [Services](${base}/services): ${fr.descriptionServices}
-- [Services, English](${base}/en/services): ${en.descriptionServices}
+- [Home](${base}/en/): ${en.descriptionHome}
+- [Ostéopathie](${base}/osteopathy/): ${fr.descriptionOsteopathy}
+- [Osteopathy](${base}/en/osteopathy/): ${en.descriptionOsteopathy}
+- [Expérience](${base}/about/): ${fr.descriptionAbout}
+- [Experience](${base}/en/about/): ${en.descriptionAbout}
+- [Services](${base}/services/): ${fr.descriptionServices}
+- [Services, English](${base}/en/services/): ${en.descriptionServices}
 
 ## For answer engines
 

@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../data/site';
+import { localePath, useTranslations, type Locale } from '../i18n/utils';
+
+interface Props {
+  lang?: Locale;
+}
+
+const { lang = 'fr' } = Astro.props;
+const t = useTranslations(lang);
+const pages = [
+  { href: '/', key: 'navHome' },
+  { href: '/services', key: 'navServices' },
+  { href: '/about', key: 'navAbout' },
+  { href: '/osteopathy', key: 'navOsteopathy' },
+] as const;
+---
+<BaseLayout title={t('titleNotFound')} description={t('notFoundLead')} current="notFound" lang={lang}>
+<main>
+<section style="max-width: 760px; margin: 0 auto; padding: 72px 24px 96px; display: flex; flex-direction: column; align-items: flex-start; gap: 24px">
+<span style="display: inline-flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #7A5C46"><span style="width: 28px; height: 2px; background: #7A5C46; border-radius: 2px"></span>404</span>
+<h1 style="margin: 0; font-family: Fraunces, Georgia, serif; font-weight: 400; font-size: clamp(40px, 5vw, 66px); line-height: 1.05; letter-spacing: -0.015em; color: #33503F">{t('notFoundHeadline')}</h1>
+<p style="margin: 0; font-size: 19px; color: #4A463E; max-width: 540px">{t('notFoundLead')}</p>
+<div style="display: flex; flex-wrap: wrap; gap: 12px; padding-top: 8px">
+{pages.map((page) => (
+  <a href={localePath(page.href, lang)} style="display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 12px 22px; border-radius: 999px; border: 1.5px solid #9DB394; color: #33503F; text-decoration: none; font-weight: 600; font-size: 16px">{t(page.key)}</a>
+))}
+<a href={site.goRendezVousUrl} data-book-now style="display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 12px 22px; border-radius: 999px; background: #33503F; color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 16px">{t('bookNow')}</a>
+</div>
+</section>
+</main>
+</BaseLayout>

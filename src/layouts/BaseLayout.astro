@@ -33,6 +33,7 @@ const themes: Record<PageKey, {
   about:      { headerBg: '#EFE4D6', logoFill: '#E1EAD9', activeBg: '#F6F3EC', footerFrom: '#2F4A3A', footerShape: 'fall',   footerOpacity: 0.45 },
   osteopathy: { headerBg: '#F6F3EC', logoFill: '#E1EAD9', activeBg: '#E1EAD9', footerFrom: '#2F4A3A', footerShape: 'fall',   footerOpacity: 0.45 },
   booking:    { headerBg: '#E1EAD9', logoFill: '#F3F6EF', activeBg: '#F3F6EF', footerFrom: '#F6F3EC', footerShape: 'ripple', footerOpacity: 0.55 },
+  notFound:   { headerBg: '#F6F3EC', logoFill: '#E1EAD9', activeBg: '#E1EAD9', footerFrom: '#F6F3EC', footerShape: 'ripple', footerOpacity: 0.55 },
 };
 
 const {
@@ -44,11 +45,12 @@ const {
 const t = themes[current];
 const translate = useTranslations(lang);
 const metaDescription = description ?? translate('description');
-const pathname = Astro.url.pathname;
+const pathname = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
 const origin = (Astro.site ?? Astro.url).toString().replace(/\/$/, '');
 const canonical = new URL(pathname, `${origin}/`).href;
 const hrefFr = new URL(swapLocale(pathname, 'fr'), `${origin}/`).href;
 const hrefEn = new URL(swapLocale(pathname, 'en'), `${origin}/`).href;
+const ogImage = new URL('/og.jpg', `${origin}/`).href;
 const htmlLang = lang === 'fr' ? 'fr-CA' : 'en-CA';
 const ogLocale = lang === 'fr' ? 'fr_CA' : 'en_CA';
 const ogLocaleAlt = lang === 'fr' ? 'en_CA' : 'fr_CA';
@@ -69,11 +71,17 @@ const ogLocaleAlt = lang === 'fr' ? 'en_CA' : 'fr_CA';
 <meta property="og:title" content={title}>
 <meta property="og:description" content={metaDescription}>
 <meta property="og:url" content={canonical}>
+<meta property="og:image" content={ogImage}>
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content={`${site.name}, ${site.tagline}`}>
 <meta property="og:locale" content={ogLocale}>
 <meta property="og:locale:alternate" content={ogLocaleAlt}>
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content={title}>
 <meta name="twitter:description" content={metaDescription}>
+<meta name="twitter:image" content={ogImage}>
+<meta name="twitter:image:alt" content={`${site.name}, ${site.tagline}`}>
 <JsonLd title={title} description={metaDescription} practiceDescription={translate('descriptionHome')} lang={lang} canonical={canonical} origin={origin} />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">

@@ -7,6 +7,7 @@ export default defineConfig({
   site: 'https://osteoemma.ca',
   integrations: [
     sitemap({
+      filter: (page) => !page.includes('/404'),
       i18n: {
         defaultLocale: 'fr',
         locales: {
@@ -17,9 +18,9 @@ export default defineConfig({
     }),
   ],
   // Pure static output: every page is pre-rendered to plain HTML.
-  // Canonicals, hreflang, and internal links have no trailing slash. Keep the sitemap the same.
+  // Canonicals, hreflang, the sitemap, and internal links all end with a slash.
   output: 'static',
-  trailingSlash: 'never',
+  trailingSlash: 'always',
   i18n: {
     defaultLocale: 'fr',
     locales: ['fr', 'en'],
